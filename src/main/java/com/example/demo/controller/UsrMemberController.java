@@ -14,6 +14,17 @@ public class UsrMemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	
+	static Member loginCk = new Member();
+	
+	public Member getLoginCk() {
+		return loginCk;
+	}
+	
+	public void setLoginCk(Member loginCk) {
+		this.loginCk = loginCk;
+	}
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
@@ -51,5 +62,34 @@ public class UsrMemberController {
 		Member member = memberService.getMember(id);
 
 		return member;
+	}
+	
+	@RequestMapping("/usr/member/doLogin")
+	@ResponseBody
+	public Object doLogin(String loginId, String loginPw) {
+		
+		if (Ut.isNullOrEmpty(loginId)) {
+			return "아이디를 입력해주세요";
+		}
+		if (Ut.isNullOrEmpty(loginPw)) {
+			return "비밀번호를 입력해주세요";
+		}
+		
+		loginCk = memberService.loginCk(loginId, loginPw);
+		
+		if(loginCk == null) {
+			return "다시 입력해주세요.";
+		}
+		
+		return loginCk.getName() + "님 ㅎㅇ.";
+	}
+	
+	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
+	public Object doLogout() {
+
+		loginCk = null;
+		
+		return "로그아웃 완료";
 	}
 }

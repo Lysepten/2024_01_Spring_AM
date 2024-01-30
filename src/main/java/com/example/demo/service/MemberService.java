@@ -37,4 +37,8 @@ public class MemberService {
 		return memberRepository.getMember(id);
 	}
 
+	public Member loginCk(String loginId, String loginPw) {
+		return memberRepository.loginCk(loginId, loginPw);
+	}
+
 }
