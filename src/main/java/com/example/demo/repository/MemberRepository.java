@@ -4,8 +4,25 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.example.demo.vo.Member;
+
 @Mapper
 public interface MemberRepository {
+	@Select("""
+			SELECT *
+			FROM `member`
+			WHERE loginId = #{loginId}
+			""")
+	public Member getMemberByLoginId(String loginId);
+
+	@Select("""
+			SELECT *
+			FROM `member`
+			WHERE name = #{name} 
+			AND email = #{email}
+			""")
+	public Member getMemberByNameAndEmail(String name, String email);
+
 	@Insert("""
 			INSERT INTO
 			`member` SET
@@ -13,7 +30,7 @@ public interface MemberRepository {
 			updateDate = NOW(),
 			loginId = #{loginId},
 			loginPw = #{loginPw},
-			name = #{name},
+			`name` = #{name},
 			nickname = #{nickname},
 			cellphoneNum = #{cellphoneNum},
 			email = #{email}
@@ -22,4 +39,8 @@ public interface MemberRepository {
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
+
+	@Select("SELECT * FROM `member` WHERE id = #{id}")
+	public Member getMember(int id);
+
 }
