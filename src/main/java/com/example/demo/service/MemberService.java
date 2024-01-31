@@ -44,43 +44,12 @@ public class MemberService {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
-	private Member getMemberByLoginId(String loginId) {
+	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
-	}
-	
-	private Member getMemberByLoginPw(String loginPw) {
-		return memberRepository.getMemberByloginPw(loginPw);
-	}
-
-	public ResultData login(String loginId, String loginPw) {
-		
-		Member isLoginData = getMemberByLoginIdAndLoginPw(loginId, loginPw);
-		 
-		if (Ut.isEmpty(isLoginData) == true) {
-			return ResultData.from("F-1", Ut.f("다시 입력해주세요", loginId, loginPw));
-		}
-		
-		if (isLoginData == null) {
-			return ResultData.from("F-2","다시 입력해주세요");
-		}
-		
-		if (isLoginData.getLoginId().equals(loginId) == false || isLoginData.getLoginPw() == null) {
-			return ResultData.from("F-3", Ut.f("아이디가 틀렸습니다.", loginId));
-		}
-		
-		if (isLoginData.getLoginPw().equals(loginPw) == false || isLoginData.getLoginPw() == null) {
-			return ResultData.from("F-4", "비밀번호가 틀렸습니다.");
-		}
-		 
-		return ResultData.from("S-1", "로그인이 완료되었습니다.", isLoginData);
-	}
-
-	private Member getMemberByLoginIdAndLoginPw(String loginId, String loginPw) {
-		return memberRepository.getMemberByloginIdAndloginPw(loginPw, loginPw);
 	}
 
 }
