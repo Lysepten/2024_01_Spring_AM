@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.MemberRepository;
+import com.example.demo.util.Ut;
 import com.example.demo.vo.Member;
+import com.example.demo.vo.ResultData;
 
 @Service
 public class MemberService {
@@ -15,18 +17,31 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public int join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+			String email) {
 
 		Member existsMember = getMemberByLoginId(loginId);
 
 		if (existsMember != null) {
-			return -1;
+			return ResultData.from("F-7", Ut.f("이미 사용중인 아이디(%s)입니다", loginId));
+		}
+
+		existsMember = getMemberByNameAndEmail(name, email);
+
+		if (existsMember != null) {
+			return ResultData.from("F-8", Ut.f("이미 사용중인 이름(%s)과 이메일(%s)입니다", name, email));
 		}
 
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 
-		return memberRepository.getLastInsertId();
+		int id = memberRepository.getLastInsertId();
 
+		return ResultData.from("S-1", "회원가입이 완료되었습니다.", id);
+
+	}
+
+	private Member getMemberByNameAndEmail(String name, String email) {
+		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
 	private Member getMemberByLoginId(String loginId) {
@@ -36,9 +51,36 @@ public class MemberService {
 	public Member getMember(int id) {
 		return memberRepository.getMember(id);
 	}
+	
+	private Member getMemberByLoginPw(String loginPw) {
+		return memberRepository.getMemberByloginPw(loginPw);
+	}
 
-	public Member loginCk(String loginId, String loginPw) {
-		return memberRepository.loginCk(loginId, loginPw);
+	public ResultData login(String loginId, String loginPw) {
+		
+		Member isLoginData = getMemberByLoginIdAndLoginPw(loginId, loginPw);
+		 
+		if (Ut.isEmpty(isLoginData) == true) {
+			return ResultData.from("F-1", Ut.f("다시 입력해주세요", loginId, loginPw));
+		}
+		
+		if (isLoginData == null) {
+			return ResultData.from("F-2","다시 입력해주세요");
+		}
+		
+		if (isLoginData.getLoginId().equals(loginId) == false || isLoginData.getLoginPw() == null) {
+			return ResultData.from("F-3", Ut.f("아이디가 틀렸습니다.", loginId));
+		}
+		
+		if (isLoginData.getLoginPw().equals(loginPw) == false || isLoginData.getLoginPw() == null) {
+			return ResultData.from("F-4", "비밀번호가 틀렸습니다.");
+		}
+		 
+		return ResultData.from("S-1", "로그인이 완료되었습니다.", isLoginData);
+	}
+
+	private Member getMemberByLoginIdAndLoginPw(String loginId, String loginPw) {
+		return memberRepository.getMemberByloginIdAndloginPw(loginPw, loginPw);
 	}
 
 }
