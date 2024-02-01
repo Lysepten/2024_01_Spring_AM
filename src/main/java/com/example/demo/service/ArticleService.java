@@ -54,4 +54,8 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", article.getId()));
 	}
 
+	public Article articlenickname(int id) {
+		return articleRepository.articlenickname(id);
+	}
+
 }
