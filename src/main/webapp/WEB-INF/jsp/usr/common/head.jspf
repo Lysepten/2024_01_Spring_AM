@@ -24,7 +24,11 @@
 			<ul class="flex">
 				<li><a class="hover:underline" href="/">HOME</a></li>
 				<li><a class="hover:underline" href="../article/list">LIST</a></li>
-				<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
+			<c:set var="isLogin" value="-1" />
+			<c:if test="${loginedMemberId eq null}">
+			<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
+			</c:if>
+				<li><a class="hover:underline" href="../member/doLogout">LOGOUT</a></li>
 			</ul>
 		</div>
 	</header>
