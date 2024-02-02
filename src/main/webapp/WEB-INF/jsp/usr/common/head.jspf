@@ -25,10 +25,13 @@
 				<li><a class="hover:underline" href="/">HOME</a></li>
 				<li><a class="hover:underline" href="../article/list">LIST</a></li>
 			<c:set var="isLogin" value="-1" />
+			
 			<c:if test="${loginedMemberId eq null}">
 			<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
 			</c:if>
+			<c:if test="${loginedMemberId ne null}">
 				<li><a class="hover:underline" href="../member/doLogout">LOGOUT</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</header>
