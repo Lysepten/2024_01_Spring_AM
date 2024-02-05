@@ -5,34 +5,32 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-	<table  class="table-box-1" border="1">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>날짜</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>작성자</th>
-				<th>작성자명</th>
-			</tr>
-		</thead>
-		<tbody>
-			<td>${article.id }</td>
-			<td>${article.regDate.substring(0,10) }</td>
-			<td>${article.title }</td>
-			<td>${article.body }</td>
-			<td>${article.memberId }</td>
-			<td>${article.nickname }</td>
-		</tbody>
-	</table>
-
-	<div>
-	<a href="list">리스트로 돌아가기</a>
+	
+	<section class="mt-8 text-xl px-4">
+	<div class="mx-auto">
+		<form action="../member/doLogin" method="POST">
+			<table class="login-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>제목</th>
+						<td><input autocomplete="off" type="text" placeholder="" name="title" /></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><input autocomplete="off" type="text" placeholder="" name="body" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input type="submit" value="로그인" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<div class="btns">
+			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+		</div>
 	</div>
-
-
-
+</section>
 
 </body>
 </html>

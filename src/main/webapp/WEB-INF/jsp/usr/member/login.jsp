@@ -2,31 +2,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="LOGIN"></c:set>
 <%@ include file="../common/head.jspf"%>
- <section class="mt-8 text-xl px-4">
- <nav class="mx-auto">
- 
- <form  class="login-box-1" method="POST" action="/usr/member/doLogin">
- 
-		<div class="loginIdBox">
-			로그인 아이디 : <input autocomplete="off" type="text"
-				placeholder="아이디를 입력해주세요" name="loginId" />
-		</div>
-		
-		<div class="loginPwBox">
-			로그인 비밀번호 : <input autocomplete="off" type="text"
-				placeholder="비밀번호를 입력해주세요" name="loginPw" />
-		</div>
-		
-		<button style="color: #64d899;" type="submit">로그인</button>
-		
-		<div class="backList">
-		<a href="../article/list">리스트로 돌아가기</a>
-	</div>
-	
-	</form>
 
-	
-	</nav>
-	</section>
+
+<section class="mt-8 text-xl px-4">
+	<div class="mx-auto">
+		<form action="../member/doLogin" method="POST">
+			<table class="login-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>아이디</th>
+						<td><input autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" /></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input type="submit" value="로그인" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<div class="btns">
+			<button class="hover:underline" type="button" onclick="history.back();">뒤로가기</button>
+		</div>
+	</div>
+</section>
+
+
 
 <%@ include file="../common/foot.jspf"%>

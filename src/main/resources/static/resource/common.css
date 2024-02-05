@@ -47,39 +47,17 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
+.login-box>tbody>tr>td>input {
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+.login-box>tbody>tr:nth-child(3)>td>input {
+	padding-left: 0;
+}
+
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
 	padding: 10px;
 	text-align: center;
-}
-
-.login-box-1 button {
-	border: 1px solid silver;
-	padding: 10px;
-	width: 500px;
-	border-radius: 0px 0px 10px 10px;
-}
-
-.loginIdBox {
-	border: 1px solid silver;
-	border-bottom: 0px;
-	padding: 10px;
-	width: 500px;
-	border-radius: 10px 10px 0px 0px;
-	text-align: center;
-}
-
-.loginPwBox {
-	border: 1px solid silver;
-	border-bottom: 0px;
-	padding: 10px;
-	width: 500px;
-	text-align: center;
-}
-
-.backList {
-	padding: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	color: #64d899;
 }
