@@ -6,6 +6,7 @@
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
+		<div class="badge badge-outline">${articlesCount }개</div>
 		<table class="table-box-1 table" border="1">
 			<colgroup>
 				<col style="width: 10%" />
@@ -34,8 +35,32 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="pagination flex justify-center mt-3">
+		<div class="btn-group">
+			<c:forEach begin="1" end="${totalPage }" var="i">
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?boardId=${board.id }&page=${i }&keyword=${keyword }&keywordbody=${keywordbody }">${i }</a>
+				
+			</c:forEach>
+		</div>
+	</div>
+	
+	<form action="/usr/article/list" method="POST">
+    <div class="search_wrap">
+        <div class="search_area">
+            <input type="text" name="keyword"/>
+            <input class="btn btn-sm" type="submit" value="Search" autocomplete="off" />
+        </div>
+    </div>
+    </form>
+    
+    <form action="/usr/article/list" method="POST">
+    <div class="search_wrap">
+        <div class="search_area">
+            <input type="text" name="keywordbody"/>
+            <input class="btn btn-sm" type="submit" value="Search" autocomplete="off" />
+        </div>
+    </div>
+    </form>
+	
 </section>
-
-
-
 <%@ include file="../common/foot.jspf"%>

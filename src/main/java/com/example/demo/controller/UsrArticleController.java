@@ -38,19 +38,43 @@ public class UsrArticleController {
 	// 액션 메서드
 
 	@RequestMapping("/usr/article/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId) {
+	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+			@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "1") String keyword, @RequestParam(defaultValue = "1") String keywordbody ) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
-
+		
 		Board board = boardService.getBoardById(boardId);
 
-		List<Article> articles = articleService.getForPrintArticles(boardId);
-
+		int articlesCount = articleService.getArticlesCount(boardId);
+		
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
-
+		
+		int keywordPage = articleService.keywordPage(keyword, boardId);
+		int bodyPage = articleService.bodyPage(keywordbody, boardId);
+		
+		int itemsInAPage = 10;
+		int totalPage = (int) Math.ceil((double) articlesCount / itemsInAPage);
+		
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, keyword);
+		
+		if(!keyword.equals("1")) {
+			totalPage = (int) Math.ceil((double)keywordPage / itemsInAPage);
+		}
+		if(!keywordbody.equals("1")) {
+			totalPage = (int) Math.ceil((double)bodyPage / itemsInAPage);
+		}
+		
+		System.err.println(keywordbody);
+		
+		model.addAttribute("bodyPage", bodyPage);
+		model.addAttribute("keywordbody", keywordbody);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("keywordPage", keywordPage);
+		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("board", board);
+		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 
 		return "usr/article/list";

@@ -78,3 +78,15 @@ header>div>ul>li>ul {
 header>div>ul>li:hover>ul {
 	display: block;
 }
+
+.search_area{
+    text-align: center;
+    margin-top: 10px;
+  }
+.search_area input{
+    border: 1px solid black;
+  }
+  
+.search_wrap {
+	display: block;
+}

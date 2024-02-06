@@ -65,14 +65,97 @@ public interface ArticleRepository {
 			""")
 	public List<Article> getArticles();
 
+//	@Select("""
+//			<script>
+//			SELECT A.*, M.nickname AS extra__writer
+//			FROM article AS A
+//			INNER JOIN `member` AS M
+//			ON A.memberId = M.id
+//			WHERE 1
+//			<if test="boardId != 0">
+//				AND A.boardId = #{boardId}
+//			</if>
+//			ORDER BY A.id DESC
+//			</script>
+//			""")
+//	public List<Article> getForPrintArticles(int boardId);
+
 	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM article
+			<if test="keyword != null">
+                    where title like concat('%',#{keyword},'%' )
+                </if>
+            <if test="keyword == null">
+            WHERE 1
+                </if>
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
+			ORDER BY id DESC
+			</script>
+			""")
+	public int getArticlesCount(int boardId);
+	
+	@Select("""
+			<script>
 			SELECT A.*, M.nickname AS extra__writer
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			WHERE boardId = #{boardId}
+			<if test="keyword != null">
+                    where title like concat('%',#{keyword},'%' )
+                </if>
+            <if test="keyword == null">
+                    where 1
+                </if>
+			<if test="boardId != 0">
+				AND A.boardId = #{boardId}
+			</if>
 			ORDER BY A.id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
 			""")
-	public List<Article> getForPrintArticles(int boardId);
+	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String keyword);
+
+	
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM article
+			<if test="keyword != null">
+                    where title like concat('%',#{keyword},'%' )
+                </if>
+            <if test="keyword == null">
+            WHERE 1
+                </if>
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
+			ORDER BY id DESC
+			</script>
+			""")
+	public int keywordPage(String keyword, int boardId);
+	
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM article
+			<if test="keywordbody != null">
+                    where `body` like concat('%',#{keywordbody},'%' )
+                </if>
+            <if test="keywordbody == null">
+            WHERE 1
+                </if>
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
+			ORDER BY id DESC
+			</script>
+			""")
+	public int bodyPage(String keywordbody, int boardId);
 
 }
