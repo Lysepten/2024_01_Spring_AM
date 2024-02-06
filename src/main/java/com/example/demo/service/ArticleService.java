@@ -82,8 +82,8 @@ public class ArticleService {
 		return articleRepository.getArticles();
 	}
 
-	public List<Article> bgnoArticles(int bgno) {
-		return articleRepository.bgnoArticles(bgno);
+	public List<Article> getForPrintArticles(int boardId) {
+		return articleRepository.getForPrintArticles(boardId);
 	}
 
 }
