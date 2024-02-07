@@ -90,3 +90,7 @@ header>div>ul>li:hover>ul {
 .search_wrap {
 	display: block;
 }
+
+.search-bar {
+	text-align: center;
+}

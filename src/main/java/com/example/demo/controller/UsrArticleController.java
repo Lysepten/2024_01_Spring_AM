@@ -39,41 +39,30 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "1") String keyword, @RequestParam(defaultValue = "1") String keywordbody ) {
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		Board board = boardService.getBoardById(boardId);
 
-		int articlesCount = articleService.getArticlesCount(boardId);
-		
+		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
+
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
-		
-		int keywordPage = articleService.keywordPage(keyword, boardId);
-		int bodyPage = articleService.bodyPage(keywordbody, boardId);
-		
+
 		int itemsInAPage = 10;
-		int totalPage = (int) Math.ceil((double) articlesCount / itemsInAPage);
-		
-		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, keyword);
-		
-		if(!keyword.equals("1")) {
-			totalPage = (int) Math.ceil((double)keywordPage / itemsInAPage);
-		}
-		if(!keywordbody.equals("1")) {
-			totalPage = (int) Math.ceil((double)bodyPage / itemsInAPage);
-		}
-		
-		System.err.println(keywordbody);
-		
-		model.addAttribute("bodyPage", bodyPage);
-		model.addAttribute("keywordbody", keywordbody);
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("keywordPage", keywordPage);
-		model.addAttribute("totalPage", totalPage);
+
+		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+
+		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode, searchKeyword);
+
 		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 

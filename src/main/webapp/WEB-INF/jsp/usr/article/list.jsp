@@ -37,9 +37,8 @@
 	</div>
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">
-			<c:forEach begin="1" end="${totalPage }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?boardId=${board.id }&page=${i }&keyword=${keyword }&keywordbody=${keywordbody }">${i }</a>
-				
+			<c:forEach begin="1" end="${pagesCount }" var="i">
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}&searchKeywordTypeCode=${searchKeywordTypeCode }&searchKeyword=${searchKeyword }">${i }</a>
 			</c:forEach>
 		</div>
 	</div>
@@ -47,20 +46,40 @@
 	<form action="/usr/article/list" method="POST">
     <div class="search_wrap">
         <div class="search_area">
-            <input type="text" name="keyword"/>
+            <input type="text" name="searchKeyword"/>
             <input class="btn btn-sm" type="submit" value="Search" autocomplete="off" />
         </div>
     </div>
     </form>
     
-    <form action="/usr/article/list" method="POST">
-    <div class="search_wrap">
-        <div class="search_area">
-            <input type="text" name="keywordbody"/>
-            <input class="btn btn-sm" type="submit" value="Search" autocomplete="off" />
-        </div>
-    </div>
-    </form>
-	
+<!--     <form action="/usr/article/list" method="POST"> -->
+<!--     <div class="search_wrap"> -->
+<!--         <div class="search_area"> -->
+<!--             <input type="text" name="searchKeyword"/> -->
+<!--             <input class="btn btn-sm" type="submit" value="Search" autocomplete="off" /> -->
+<!--         </div> -->
+<!--     </div> -->
+<!--     </form> -->
+
+<!-- <div class="search-bar"> -->
+<!-- <select class="select select-sm w-full max-w-xs"> -->
+<!--   <option>제목</option> -->
+<!--   <option>내용</option> -->
+<!-- <input type="text" /> -->
+<!-- <input class="btn btn-sm" type="submit" value="Search" /> -->
+<!-- </select> -->
+<!-- </div> -->
+
+<!-- <div class="search-bar"> -->
+<!-- <form action="/usr/article/list" method="get"> -->
+<!--     <select id="searchType" name="searchType" > -->
+<!--         <option value="name">제목</option> -->
+<!--         <option value="category">내용</option> -->
+<!--     </select> -->
+<!--     <input type="text" id="keyword" name="keyword"> -->
+<!--     <input class="btn btn-sm" type="submit" value="Search" /> -->
+<!-- </form> -->
+<!-- </div> -->
+
 </section>
 <%@ include file="../common/foot.jspf"%>
