@@ -101,4 +101,8 @@ public class ArticleService {
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
 	}
 
+	public void detailHit(int id) {
+		articleRepository.detailHit(id);
+	}
+
 }

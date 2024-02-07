@@ -13,4 +13,6 @@
 	if (historyBack) {
 		history.back();
 	}
+	
 </script>
+

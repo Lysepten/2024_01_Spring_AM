@@ -3,6 +3,41 @@
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 
+	<script type="text/javascript">
+    function ajax_text() {
+        var hit = 0;
+        $.ajax({ 
+            type:"POST", 
+            url:"list",
+            data: {
+                hit: hit,
+            },
+            dataType: 'int',
+            success:function(result){ 
+                console.log(result);
+            }
+        });
+    }
+</script>
+
+<script>
+
+    // Ajax 요청을 보냅니다.
+    $.ajax({
+      url: '/usr/article/detail',
+      type: 'POST',
+      data: JSON.stringify(hit),
+      success: function(result) {
+        // 성공적으로 응답을 받았을 때 처리할 로직을 작성합니다.
+        // response 변수에는 컨트롤러에서 반환한 데이터가 포함됩니다.
+      },
+      error: function() {
+        // 응답이 실패했을 때 처리할 로직을 작성합니다.
+      }
+    });
+  }
+</script>
+
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
@@ -32,6 +67,10 @@
 					<th>내용</th>
 					<td>${article.body }</td>
 				</tr>
+				<tr>
+					<th>조회수</th>
+					<td>${article.hit }</td>
+				</tr>
 			</tbody>
 		</table>
 		<div class="btns mt-5">
@@ -43,6 +82,8 @@
 				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
+			<button class="btn" onclick="ajax_text()">👍 따봉 👍</button>
+			
 		</div>
 	</div>
 </section>
