@@ -3,6 +3,35 @@
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 
+<!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
+<script>
+	const params = {};
+	params.id = parseInt('${param.id}');
+</script>
+
+<script>
+	function ArticleDetail__doIncreaseHitCount() {
+		const localStorageKey = 'article__' + params.id + '__alreadyView';
+
+		if (localStorage.getItem(localStorageKey)) {
+			return;
+		}
+
+		localStorage.setItem(localStorageKey, true);
+
+		$.get('../article/doIncreaseHitCountRd', {
+			id : params.id,
+			ajaxMode : 'Y'
+		}, function(data) {
+			$('.article-detail__hit-count').empty().html(data.data1);
+		}, 'json');
+	}
+
+	$(function() {
+		// 		ArticleDetail__doIncreaseHitCount();
+		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
+	})
+</script>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
@@ -34,7 +63,7 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td>${article.hitCount }</td>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
 				</tr>
 			</tbody>
 		</table>
