@@ -18,11 +18,6 @@ public class UsrHomeController {
 		return "redirect:/usr/home/main";
 	}
 	
-//	@RequestMapping("/usr/article/list")
-//	public String showlist() {
-//
-//		return "/usr/article/list";
-//	}
 	
 	@RequestMapping("/list")
 	public String showlistRoot() {

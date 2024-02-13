@@ -94,11 +94,11 @@ public interface ArticleRepository {
 						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<when test="searchKeywordTypeCode == 'body'">
-						AND A.`body` LIKE CONCAT('%',#{searchKeyword},'%')
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
 						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR A.`body` LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
@@ -106,6 +106,13 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+
+	@Update("""
+			UPDATE article
+			SET hitCount = hitCount + 1
+			WHERE id = #{id}
+			""")
+	public int increaseHitCount(int id);
 
 	@Select("""
 			<script>
@@ -123,11 +130,11 @@ public interface ArticleRepository {
 						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<when test="searchKeywordTypeCode == 'body'">
-						AND A.`body` LIKE CONCAT('%',#{searchKeyword},'%')
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
 						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR A.`body` LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
@@ -137,14 +144,7 @@ public interface ArticleRepository {
 			</if>
 			</script>
 			""")
-	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword);
-	
-	
-	@Update("""
-			UPDATE article
-			SET hit = hit+1
-			WHERE id = #{id}
-				""")
-	public void detailHit(int id);
+	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
+			String searchKeyword);
 
 }

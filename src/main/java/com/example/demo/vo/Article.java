@@ -12,9 +12,9 @@ public class Article {
 	private String regDate;
 	private String updateDate;
 	private int memberId;
-	private int hit;
 	private String title;
 	private String body;
+	private int hitCount;
 
 	private String extra__writer;
 

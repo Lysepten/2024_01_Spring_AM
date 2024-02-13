@@ -3,8 +3,6 @@ package com.example.demo.util;
 import java.lang.reflect.Array;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpSession;
-
 public class Ut {
 
 	public static String f(String format, Object... args) {
@@ -65,9 +63,9 @@ public class Ut {
 		if (replaceUri == null) {
 			msg = "/";
 		}
-		
+
 		String resultMsg = resultCode + " / " + msg;
-		
+
 		return Ut.f("""
 				<script>
 					const resultMsg = '%s'.trim();
@@ -77,13 +75,6 @@ public class Ut {
 					location.replace('%s');
 				</script>
 				""", resultMsg, replaceUri);
-	}
-
-	public static int isLogined(HttpSession httpSession) {
-		
-		
-		
-		return 0;
 	}
 
 }
