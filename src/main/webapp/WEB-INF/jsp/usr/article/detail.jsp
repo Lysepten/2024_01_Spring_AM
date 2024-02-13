@@ -7,6 +7,31 @@
 <script>
 	const params = {};
 	params.id = parseInt('${param.id}');
+	
+	const userId = {};
+	userid = parseInt('${rq.loginedMemberId}');
+</script>
+
+<script>
+	function ArticleDetail__doIncreaselike(button) {
+		const localStorageKey = 'article__' + params.id + '__alreadyView';		
+		const localStorageId = 'article__' + userid + '__like';
+
+		if (localStorage.getItem(localStorageId)) {
+			if (localStorage.getItem(localStorageKey)) {
+				return;
+			}
+		}
+		
+		localStorage.setItem(localStorageId, true);
+
+		$.get('../article/doIncreaselike', {
+			id : params.id,
+			ajaxMode : 'Y'
+		}, function(data) {
+			$('.article-detail__like-count').empty().html(data.data1);
+		}, 'json');
+	}
 </script>
 
 <script>
@@ -76,6 +101,7 @@
 				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
+			<button class="btn btn-outline" type="button" onclick="ArticleDetail__doIncreaselike();">좋아요</button>
 		</div>
 	</div>
 </section>

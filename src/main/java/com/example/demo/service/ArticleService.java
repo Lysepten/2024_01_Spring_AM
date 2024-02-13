@@ -118,4 +118,19 @@ public class ArticleService {
 				searchKeyword);
 	}
 
+	public ResultData increaseLike(int id) {
+		int affectedRow = articleRepository.increaseLike(id);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
+		}
+
+		return ResultData.from("S-1", "해당 게시물 좋아요 증가", "id", id);
+
+	}
+
+	public Object getArticleLike(int id) {
+		return articleRepository.getArticleLike(id);
+	}
+
 }

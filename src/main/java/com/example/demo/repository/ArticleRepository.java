@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Article;
+import com.example.demo.vo.ResultData;
 
 @Mapper
 public interface ArticleRepository {
@@ -120,6 +121,20 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public int getArticleHitCount(int id);
+	
+	@Update("""
+			UPDATE article
+			SET `like` = `like` + 1
+			WHERE id = #{id}
+			""")
+	public int increaseLike(int id);
+	
+	@Select("""
+			SELECT `like`
+			FROM article
+			WHERE id = #{id}
+			""")
+	public Object getArticleLike(int id);
 
 	@Select("""
 			<script>
@@ -153,5 +168,7 @@ public interface ArticleRepository {
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
+
+	
 
 }

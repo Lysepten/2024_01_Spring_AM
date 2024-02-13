@@ -103,6 +103,26 @@ public class UsrArticleController {
 		return rd;
 
 	}
+	
+	@RequestMapping("/usr/article/doIncreaselike")
+	@ResponseBody
+	public ResultData doIncreaselike(int id) {
+		
+		
+		
+		ResultData increaseLikeRd = articleService.increaseLike(id);
+
+		if (increaseLikeRd.isFail()) {
+			return increaseLikeRd;
+		}
+		
+		ResultData rd = ResultData.newData(increaseLikeRd, "Like", articleService.getArticleLike(id));
+		
+		rd.setData2("id", id);
+		
+		return rd;
+
+	}
 
 	@RequestMapping("/usr/article/write")
 	public String showJoin(HttpServletRequest req) {
