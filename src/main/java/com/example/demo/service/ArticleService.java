@@ -104,6 +104,18 @@ public class ArticleService {
 	public Object getArticleHitCount(int id) {
 		return articleRepository.getArticleHitCount(id);
 	}
+	
+
+	public ResultData increaseLike(int memberId, int id) {
+		
+		int affectedRow = articleRepository.increaseLike(memberId, id);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "해당 게시물 없음", "id", id);
+		}
+
+		return ResultData.from("S-1", "해당 게시물 좋아요 반영", "id", id);
+	}
 
 	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode,
 			String searchKeyword) {
@@ -117,5 +129,10 @@ public class ArticleService {
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode,
 				searchKeyword);
 	}
+
+	public Object getArticleLike(int id) {
+		return articleRepository.getArticleLike(id);
+	}
+
 
 }

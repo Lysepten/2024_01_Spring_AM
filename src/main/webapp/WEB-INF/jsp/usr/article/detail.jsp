@@ -33,6 +33,27 @@
 	})
 </script>
 
+<script>
+$(function () {
+	$(".is_goodButton").on("click", ArticleDetail__doIncreaseLike);
+});
+
+	function ArticleDetail__doIncreaseLike() {
+
+		$.get('../article/doIncreaseLike', {
+			id : params.id,
+			ajaxMode : 'Y'
+		}, function(data) {
+			$('.is_good').empty().html('좋아요');
+		}, 'json');
+	} 
+	
+	
+</script>
+
+<script>
+</script>
+
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<table class="table-box-1" border="1">
@@ -55,7 +76,7 @@
 				</tr>
 				<tr>
 					<th>좋아요</th>
-					<td>${article.extra__goodReactionPoint }</td>
+					<span><td class="is_good">${article.extra__goodReactionPoint }</td></span>
 				</tr>
 				<tr>
 					<th>싫어요</th>
@@ -64,6 +85,12 @@
 				<tr>
 					<th>추천 합</th>
 					<td>${article.extra__sumReactionPoint }</td>
+				</tr>
+				<tr>
+					<th>추천</th>
+					<td><span class="is_goodButton">👍</span>
+						<span class="is_badButton">👎</span>
+					</td>
 				</tr>
 				<tr>
 					<th>조회수</th>

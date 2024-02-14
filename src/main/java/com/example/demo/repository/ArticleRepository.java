@@ -49,6 +49,20 @@ public interface ArticleRepository {
 			</script>
 				""")
 	public Article getForPrintArticle(int id);
+	
+	@Select("""
+			<script>
+				SELECT IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)),0) AS extra__goodReactionPoint
+				FROM article AS A
+				INNER JOIN `member` AS M
+				ON A.memberId = M.id
+				LEFT JOIN reactionPoint AS RP
+				ON A.id = RP.relId AND RP.relTypeCode = 'article'
+				WHERE A.id = #{id}
+				GROUP BY A.id
+			</script>
+				""")
+	public Object getArticleLike(int id);
 
 	@Delete("DELETE FROM article WHERE id = #{id}")
 	public void deleteArticle(int id);
@@ -128,7 +142,18 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public int getArticleHitCount(int id);
-
+	
+	@Insert("""
+			INSERT INTO reactionPoint
+			SET regDate = NOW(),
+			updateDate = NOW(),
+			relTypeCode = 'article',
+			relId = #{id},
+			memberId = #{memberId},
+			`point` = 1
+			""")
+	public int increaseLike(int memberId, int id);
+	
 	@Select("""
 			<script>
 			SELECT A.*,
@@ -167,5 +192,7 @@ public interface ArticleRepository {
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
+
+
 
 }

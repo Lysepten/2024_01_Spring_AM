@@ -27,7 +27,7 @@ public class ResultData<DT> {
 		rd.msg = msg;
 		rd.data1Name = data1Name;
 		rd.data1 = data1;
-
+		
 		return rd;
 	}
 
