@@ -103,33 +103,6 @@ public class UsrArticleController {
 		return rd;
 
 	}
-	
-	@RequestMapping("/usr/article/doIncreaseLike")
-	@ResponseBody
-	public ResultData doIncreaseLike(HttpServletRequest req, int id) {
-		
-		Rq rq = (Rq) req.getAttribute("rq");
-		
-//		int likecheck = articleService.likecheck(rq.getLoginedMemberId(), id);
-		
-//		if(likecheck >= 1) {
-//			return ResultData.from("F-1", "이미 좋아요 누름", "id", id);
-//			
-//		}
-
-		ResultData increaseLikeRd = articleService.increaseLike(rq.getLoginedMemberId(), id);
-		
-		if (increaseLikeRd.isFail()) {
-			return increaseLikeRd;
-		}
-	
-		ResultData rd = ResultData.newData(increaseLikeRd, "LikeCount", articleService.getArticleLikeCount(id));
-
-		rd.setData2("id", id);
-
-		return rd;
-
-	}
 
 	@RequestMapping("/usr/article/write")
 	public String showJoin(HttpServletRequest req) {
