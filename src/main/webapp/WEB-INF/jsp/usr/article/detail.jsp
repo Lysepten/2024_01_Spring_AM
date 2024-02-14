@@ -7,31 +7,6 @@
 <script>
 	const params = {};
 	params.id = parseInt('${param.id}');
-	
-	const userId = {};
-	userid = parseInt('${rq.loginedMemberId}');
-</script>
-
-<script>
-	function ArticleDetail__doIncreaselike(button) {
-		const localStorageKey = 'article__' + params.id + '__alreadyView';		
-		const localStorageId = 'article__' + userid + '__like';
-
-		if (localStorage.getItem(localStorageId)) {
-			if (localStorage.getItem(localStorageKey)) {
-				return;
-			}
-		}
-		
-		localStorage.setItem(localStorageId, true);
-
-		$.get('../article/doIncreaselike', {
-			id : params.id,
-			ajaxMode : 'Y'
-		}, function(data) {
-			$('.article-detail__like-count').empty().html(data.data1);
-		}, 'json');
-	}
 </script>
 
 <script>
@@ -79,6 +54,22 @@
 					<td>${article.extra__writer }</td>
 				</tr>
 				<tr>
+					<th>좋아요</th>
+					<td>${article.extra__goodReactionPoint }</td>
+				</tr>
+				<tr>
+					<th>싫어요</th>
+					<td>${article.extra__badReactionPoint }</td>
+				</tr>
+				<tr>
+					<th>추천 합</th>
+					<td>${article.extra__sumReactionPoint }</td>
+				</tr>
+				<tr>
+					<th>조회수</th>
+					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
+				</tr>
+				<tr>
 					<th>제목</th>
 					<td>${article.title }</td>
 				</tr>
@@ -86,10 +77,7 @@
 					<th>내용</th>
 					<td>${article.body }</td>
 				</tr>
-				<tr>
-					<th>조회수</th>
-					<td><span class="article-detail__hit-count">${article.hitCount }</span></td>
-				</tr>
+
 			</tbody>
 		</table>
 		<div class="btns mt-5">
@@ -101,7 +89,6 @@
 				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
-			<button class="btn btn-outline" type="button" onclick="ArticleDetail__doIncreaselike();">좋아요</button>
 		</div>
 	</div>
 </section>

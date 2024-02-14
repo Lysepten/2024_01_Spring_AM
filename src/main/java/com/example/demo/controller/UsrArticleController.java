@@ -97,29 +97,36 @@ public class UsrArticleController {
 		}
 
 		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", articleService.getArticleHitCount(id));
-		
+
 		rd.setData2("id", id);
-		
+
 		return rd;
 
 	}
 	
-	@RequestMapping("/usr/article/doIncreaselike")
+	@RequestMapping("/usr/article/doIncreaseLike")
 	@ResponseBody
-	public ResultData doIncreaselike(int id) {
+	public ResultData doIncreaseLike(HttpServletRequest req, int id) {
 		
+		Rq rq = (Rq) req.getAttribute("rq");
 		
+//		int likecheck = articleService.likecheck(rq.getLoginedMemberId(), id);
 		
-		ResultData increaseLikeRd = articleService.increaseLike(id);
+//		if(likecheck >= 1) {
+//			return ResultData.from("F-1", "이미 좋아요 누름", "id", id);
+//			
+//		}
 
+		ResultData increaseLikeRd = articleService.increaseLike(rq.getLoginedMemberId(), id);
+		
 		if (increaseLikeRd.isFail()) {
 			return increaseLikeRd;
 		}
-		
-		ResultData rd = ResultData.newData(increaseLikeRd, "Like", articleService.getArticleLike(id));
-		
+	
+		ResultData rd = ResultData.newData(increaseLikeRd, "LikeCount", articleService.getArticleLikeCount(id));
+
 		rd.setData2("id", id);
-		
+
 		return rd;
 
 	}
