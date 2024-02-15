@@ -10,8 +10,6 @@ import com.example.demo.util.Ut;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @Controller
 public class UsrReactionPointController {
 
@@ -21,60 +19,56 @@ public class UsrReactionPointController {
 	@Autowired
 	private ReactionPointService reactionPointService;
 
-	// 액션 메서드
-
 	@RequestMapping("/usr/reactionPoint/doGoodReaction")
 	@ResponseBody
-	public String doGoodReaction(String relTypeCode, int relId, String replaceUri) {
+	public ResultData doGoodReaction(String relTypeCode, int relId, String replaceUri) {
 
-		int usersReaction = reactionPointService.usersReaction(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), relTypeCode, relId);
+
+		int usersReaction = (int) usersReactionRd.getData1();
 
 		if (usersReaction == 1) {
-			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-			reactionPointService.removeGoodReactionPoint(relId);
-			return Ut.jsReplace("F-1", "좋아요 취소함ㅋ", "/usr/article/detail?id="+relId);
+			ResultData rd = reactionPointService.deleteGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			return ResultData.from("S-1", "좋아요 취소");
 		} else if (usersReaction == -1) {
-			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-			reactionPointService.removeBadReactionPoint(relId);
-			doGoodReaction(relTypeCode, relId, replaceUri);
-			return Ut.jsReplace("F-1", "싫어요 취소하고 좋아요 누름ㅎ", "/usr/article/detail?id="+relId);
+			ResultData rd = reactionPointService.deleteBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			rd = reactionPointService.addGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			return ResultData.from("S-2", "싫어요 눌렀잖어");
 		}
-		
-//		if (usersReaction == 0) {
-//			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-//			return Ut.jsHistoryBack("F-1", "이건 왜나오지?");
-//		}
 
-		ResultData reactionRd = reactionPointService.increaseReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData reactionRd = reactionPointService.addGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
 
-		return Ut.jsReplace(reactionRd.getResultCode(), reactionRd.getMsg(), replaceUri);
+		if (reactionRd.isFail()) {
+			return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg());
+		}
+
+		return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg());
 	}
-	
+
 	@RequestMapping("/usr/reactionPoint/doBadReaction")
 	@ResponseBody
-	public String doBadReaction(String relTypeCode, int relId, String replaceUri) {
+	public ResultData doBadReaction(String relTypeCode, int relId, String replaceUri) {
 
-		int usersReaction = reactionPointService.usersReaction(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), relTypeCode, relId);
+
+		int usersReaction = (int) usersReactionRd.getData1();
 
 		if (usersReaction == -1) {
-			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-			reactionPointService.removeBadReactionPoint(relId);
-			return Ut.jsReplace("F-1", "싫어요 취소함ㅋ", "/usr/article/detail?id="+relId);
+			ResultData rd = reactionPointService.deleteBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			return ResultData.from("S-1", "싫어요 취소");
 		} else if (usersReaction == 1) {
-			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-			reactionPointService.removeGoodReactionPoint(relId);
-			doBadReaction(relTypeCode, relId, replaceUri);
-			return Ut.jsReplace("F-1", "좋아요 취소하고 싫어요 누름ㅎ", "/usr/article/detail?id="+relId);
+			ResultData rd = reactionPointService.deleteGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			rd = reactionPointService.addBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+			return ResultData.from("S-2", "좋아요 눌렀잖어");
 		}
-		
-//		if (usersReaction == 0) {
-//			reactionPointService.doremove(rq.getLoginedMemberId(), relTypeCode, relId);
-//			return Ut.jsHistoryBack("F-1", "이건 왜나오지?");
-//		}
-		
-		ResultData reactionRd = reactionPointService.reduseReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
 
-		return Ut.jsReplace(reactionRd.getResultCode(), reactionRd.getMsg(), replaceUri);
+		ResultData reactionRd = reactionPointService.addBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+
+		if (reactionRd.isFail()) {
+			return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg());
+		}
+
+		return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg());
 	}
 
 }

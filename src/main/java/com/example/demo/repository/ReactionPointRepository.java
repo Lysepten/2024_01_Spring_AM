@@ -26,7 +26,7 @@ public interface ReactionPointRepository {
 			memberId = #{memberId},
 			`point` = 1
 			""")
-	public int increaseReactionPoint(int memberId, String relTypeCode, int relId);
+	public int addGoodReactionPoint(int memberId, String relTypeCode, int relId);
 
 	@Insert("""
 			INSERT INTO reactionPoint
@@ -34,18 +34,17 @@ public interface ReactionPointRepository {
 			updateDate = NOW(),
 			relTypeCode = #{relTypeCode},
 			relId = #{relId},
-			memberId = #{loginedMemberId},
+			memberId = #{memberId},
 			`point` = -1
 			""")
-	public int reduseReactionPoint(int loginedMemberId, String relTypeCode, int relId);
-	
+	public int addBadReactionPoint(int memberId, String relTypeCode, int relId);
 
 	@Delete("""
 			DELETE FROM reactionPoint
-			WHERE memberId = #{loginedMemberId}
+			WHERE memberId = #{memberId}
 			AND relTypeCode = #{relTypeCode}
 			AND relId = #{relId}
 			""")
-	public void doremove(int loginedMemberId, String relTypeCode, int relId);
+	public void deleteReactionPoint(int memberId, String relTypeCode, int relId);
 
 }
