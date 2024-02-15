@@ -4,6 +4,8 @@
 <%@ include file="../common/head.jspf"%>
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
+
+
 <script>
 	const params = {};
 	params.id = parseInt('${param.id}');
@@ -30,28 +32,7 @@
 	$(function() {
 		// 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
-	})
-</script>
-
-<script>
-$(function () {
-	$(".is_goodButton").on("click", ArticleDetail__doIncreaseLike);
-});
-
-	function ArticleDetail__doIncreaseLike() {
-
-		$.get('../article/doIncreaseLike', {
-			id : params.id,
-			ajaxMode : 'Y'
-		}, function(data) {
-			$('.is_good').empty().html('좋아요');
-		}, 'json');
-	} 
-	
-	
-</script>
-
-<script>
+	});
 </script>
 
 <section class="mt-8 text-xl px-4">
@@ -75,22 +56,19 @@ $(function () {
 					<td>${article.extra__writer }</td>
 				</tr>
 				<tr>
-					<th>좋아요</th>
-					<span><td class="is_good">${article.extra__goodReactionPoint }</td></span>
+					<th class="reaction">좋아요</th>
+					<td>${article.goodReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>싫어요</th>
-					<td>${article.extra__badReactionPoint }</td>
+					<td>${article.badReactionPoint }</td>
 				</tr>
 				<tr>
-					<th>추천 합</th>
-					<td>${article.extra__sumReactionPoint }</td>
-				</tr>
-				<tr>
-					<th>추천</th>
-					<td><span class="is_goodButton">👍</span>
-						<span class="is_badButton">👎</span>
-					</td>
+					<th>추천 ${usersReaction }</th>
+					<td><a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-success">좋아요</a> &nbsp;&nbsp;
+							<a href="/usr/reactionPoint/doBadReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}"
+							class="reaction btn btn-outline btn-error">싫어요</a></td>
 				</tr>
 				<tr>
 					<th>조회수</th>
