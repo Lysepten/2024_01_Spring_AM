@@ -9,9 +9,15 @@
 <script>
 	const params = {};
 	params.id = parseInt('${param.id}');
+	params.memberId = parseInt('${loginedMemberId}');
+	
+	console.log(params);
+	console.log(params.memberId);
 	
 	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
+	
+	
 </script>
 
 <!-- 조회수 -->
@@ -39,6 +45,12 @@
 	});
 </script>
 
+<!-- 댓글 기능-->
+
+<!-- 댓글 버튼-->
+<script>
+
+</script>
 <!-- 좋아요 싫어요  -->
 <script>
 	<!-- 좋아요 싫어요 버튼	-->
@@ -51,16 +63,22 @@
 			return;
 		}
 	}
-
-	//////////////// articleContoller에서 애초에 count 값을 같이 model에 포함시켜서 보내자
+	
 	function doGoodReaction(articleId) {
+		if(isNaN(params.memberId) == true){
+			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+				var currentUri = encodeURIComponent(window.location.href);
+				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+			}
+			return;
+		}
 		
 		$.ajax({
 			url: '/usr/reactionPoint/doGoodReaction',
 			type: 'POST',
-			data: {relTypeCode: 'article', relId: articleId}, // 값을 보낼때의 data
+			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
-			success: function(data){ // return받은 data
+			success: function(data){
 				console.log(data);
 				console.log('data.data1Name : ' + data.data1Name);
 				console.log('data.data1 : ' + data.data1);
@@ -80,7 +98,7 @@
 						DislikeCount.text(data.data2);
 						likeButton.toggleClass('btn-outline');
 						likeCount.text(data.data1);
-					}else { 
+					}else {
 						likeButton.toggleClass('btn-outline');
 						likeCount.text(data.data1);
 					}
@@ -101,6 +119,14 @@
 	
 	
 	function doBadReaction(articleId) {
+		
+		if(isNaN(params.memberId) == true){
+			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+				var currentUri = encodeURIComponent(window.location.href);
+				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+			}
+			return;
+		}
 		
 	 $.ajax({
 			url: '/usr/reactionPoint/doBadReaction',
@@ -201,12 +227,9 @@
 					<th>내용</th>
 					<td>${article.body }</td>
 				</tr>
-
-			</tbody>
 		</table>
-		<div>
-		<input class="input input-bordered w-full max-w-xs" type="text" autocomplete="off" name="comment"/>
 		</div>
+		
 		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 			<c:if test="${article.userCanModify }">
@@ -219,7 +242,30 @@
 		</div>
 	</div>
 </section>
-
-
+<section class="mt-8 text-xl px-4 mb-4">
+	<div class="mx-auto">
+		<table class="table-box-2 table table-zebra ">
+		<tbody>
+			<c:forEach var="reply" items="${replys }">
+				<tr class="hover">
+					<td class="text-sm replytb">댓글 생성일 :${reply.regDate.substring(2,10) }</td>
+					<td class="text-sm replytb">댓글 수정일 : ${reply.updateDate.substring(2,10) }</td>
+					<td class="text-sm replytb">🧑${reply.nickname }</td>
+					<td class="text-sm replytb">댓글 내용 : ${reply.content }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+			</tbody>
+			</table>
+			</div>
+			<c:if test="${rq.isLogined() }">
+			<form action="../reply/dowrite" method="GET">
+		<input class="input input-bordered w-full max-w-xs m-1" type="text" autocomplete="off" name="content" placeholder="댓글 내용을 입력해주세요"/>
+		<input type="hidden" name="relId" value="${param.id }">
+		<input type="hidden" name="relTypeCode" value="article"/>
+		<input class="btn btn-outline btn-info replySubmit" type="submit" value="댓글등록" />
+		</form>
+		</c:if>
+		</section>
 
 <%@ include file="../common/foot.jspf"%>
