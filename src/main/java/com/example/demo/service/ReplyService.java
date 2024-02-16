@@ -48,6 +48,12 @@ public class ReplyService {
 		return replyRepository.getForPrintReplys(relId, relTypeCode);
 	}
 
+
+	public ResultData getReply(int loginedMemberId, String relTypeCode, int relId) {
+		
+		return replyRepository.getReply(loginedMemberId, relTypeCode, relId);
+	}
+
 //	public ResultData addBadReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
 //		int affectedRow = reactionPointRepository.addBadReactionPoint(loginedMemberId, relTypeCode, relId);
 //

@@ -50,6 +50,21 @@
 <!-- 댓글 버튼-->
 <script>
 
+// $(function () {
+// 	$(".replySubmit").on("click", reply_list);
+// });
+
+function replySubmit(articleId) {
+$.ajax({
+	url: '/usr/reply/dolist',
+	type: 'POST',
+	data: {relTypeCode: 'article', relId: articleId},
+	dataType: 'json',
+	success: function(data){
+	}
+	}
+}
+
 </script>
 <!-- 좋아요 싫어요  -->
 <script>
@@ -263,7 +278,7 @@
 		<input class="input input-bordered w-full max-w-xs m-1" type="text" autocomplete="off" name="content" placeholder="댓글 내용을 입력해주세요"/>
 		<input type="hidden" name="relId" value="${param.id }">
 		<input type="hidden" name="relTypeCode" value="article"/>
-		<input class="btn btn-outline btn-info replySubmit" type="submit" value="댓글등록" />
+		<input class="btn btn-outline btn-info" type="submit" onclick="replySubmit(${param.id})" value="댓글등록" />
 		</form>
 		</c:if>
 		</section>
