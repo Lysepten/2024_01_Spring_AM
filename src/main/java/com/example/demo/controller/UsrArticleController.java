@@ -35,10 +35,10 @@ public class UsrArticleController {
 	private BoardService boardService;
 
 	@Autowired
-	private ReactionPointService reactionPointService;
-	
-	@Autowired
 	private ReplyService replyService;
+
+	@Autowired
+	private ReactionPointService reactionPointService;
 
 	public UsrArticleController() {
 
@@ -94,13 +94,14 @@ public class UsrArticleController {
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
-		String relTypeCode = "article";
-		
-		List<Reply> replys = replyService.getForPrintReplys(id, relTypeCode);
-		
-		model.addAttribute("replys", replys);
+
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
+
+		int repliesCount = replies.size();
 
 		model.addAttribute("article", article);
+		model.addAttribute("replies", replies);
+		model.addAttribute("repliesCount", repliesCount);
 		model.addAttribute("isAlreadyAddGoodRp",
 				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 		model.addAttribute("isAlreadyAddBadRp",

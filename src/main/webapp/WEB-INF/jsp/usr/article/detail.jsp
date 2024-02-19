@@ -45,34 +45,6 @@
 	});
 </script>
 
-<!-- 댓글 기능-->
-
-<!-- 댓글 버튼-->
-<script>
-
-function doReply() {
-	if(isNaN(params.memberId) == true){
-		if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
-			var currentUri = encodeURIComponent(window.location.href);
-			window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
-		}
-		return;
-	}
-}
-
-
-// function replySubmit(articleId) {
-// $.ajax({
-// 	url: '/usr/reply/dolist',
-// 	type: 'POST',
-// 	data: {relTypeCode: 'article', relId: articleId},
-// 	dataType: 'json',
-// 	success: function(data){
-// 	}
-// 	}
-// }
-</script>
-
 <!-- 좋아요 싫어요  -->
 <script>
 	<!-- 좋아요 싫어요 버튼	-->
@@ -197,10 +169,35 @@ function doReply() {
 	});
 </script>
 
+<!-- 댓글 -->
+<script>
+		var ReplyWrite__submitDone = false;
 
-<section class="mt-8 text-xl px-4">
-	<div class="mx-auto">
-		<table class="table-box-1" border="1">
+		function ReplyWrite__submit(form) {
+			if (ReplyWrite__submitDone) {
+				alert('이미 처리중입니다');
+				return;
+			}
+			console.log(123);
+			
+			console.log(form.body.value);
+			
+			if (form.body.value.length < 3) {
+				alert('댓글은 3글자 이상 입력해');
+				form.body.focus();
+				return;
+			}
+
+			ReplyWrite__submitDone = true;
+			form.submit();
+
+		}
+	</script>
+
+
+<section class="mt-8 text-xl px-4 ">
+	<div class="">
+		<table class="table-box-1 " border="1">
 			<tbody>
 				<tr>
 					<th>번호</th>
@@ -249,9 +246,9 @@ function doReply() {
 					<th>내용</th>
 					<td>${article.body }</td>
 				</tr>
+
+			</tbody>
 		</table>
-		</div>
-		
 		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 			<c:if test="${article.userCanModify }">
@@ -264,38 +261,71 @@ function doReply() {
 		</div>
 	</div>
 </section>
-<section class="mt-8 text-xl px-4 mb-4">
-	<div class="mx-auto">
-		<table class="table-box-2 table table-zebra ">
-		<tbody>
-			<c:forEach var="reply" items="${replys }">
-				<tr class="">
-					<td>
-						<button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReaction(${param.id})">👍</button>
-						<button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReaction(${param.id})">👎</button>
-					</td>
-					<td class="text-sm replytb">댓글 작성일 :${reply.regDate.substring(2,10) }</td>
-					<td class="text-sm replytb">댓글 수정일 : ${reply.updateDate.substring(2,10) }</td>
-					<td class="text-sm replytb">🧑${reply.nickname }</td>
-					<td class="text-sm replytb modifyBf">댓글 내용 : ${reply.content }
-			<c:if test="${loginedMemberId == reply.memberId }">
-			<a class="btn btn-outline btn-warning btn-xs" href="../article/domodify?id=${reply.id }&relId=${article.id }" onclick="">수정</a>
-				<a class="btn btn-outline btn-error btn-xs" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../reply/doDelete?id=${reply.id }&relId=${article.id }">삭제</a>
-			</c:if>
-					</td>
-				</tr>
-			</c:forEach>
-			</tbody>
-			</tbody>
+
+<section class="mt-5 px-3">
+	<c:if test="${rq.isLogined() }">
+		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
+			<input type="hidden" name="relTypeCode" value="article" />
+			<input type="hidden" name="relId" value="${article.id }" />
+			<table class="write-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>내용</th>
+						<td>
+							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="내용을 입력해주세요" name="body"> </textarea>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
+						</td>
+					</tr>
+				</tbody>
 			</table>
-			</div>
-			<form action="../reply/dowrite" method="GET">
-		<input class="input input-bordered w-full my-1" type="text" autocomplete="off" name="content" onclick="doReply()" placeholder="댓글 내용을 입력해주세요"/>
-		<input type="hidden" name="relId" value="${param.id }">
-		<input type="hidden" name="relTypeCode" value="article"/>
-		<input class="btn btn-outline" type="submit" onclick="replySubmit(${param.id})" value="댓글등록" />
 		</form>
-		</section>
+	</c:if>
+	<c:if test="${!rq.isLogined() }">
+		<a class="btn btn-outline btn-ghost" href="../member/login">LOGIN</a> 하고 댓글 써
+	</c:if>
+	<div class="mx-auto">
+		<h2>댓글 리스트(${repliesCount })</h2>
+		<table class="table-box-1 table" border="1">
+			<colgroup>
+				<col style="width: 10%" />
+				<col style="width: 20%" />
+				<col style="width: 60%" />
+				<col style="width: 10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>좋아요</th>
+					<th>싫어요</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<c:forEach var="reply" items="${replies }">
+					<tr class="hover">
+						<td>${reply.id }</td>
+						<td>${reply.regDate.substring(0,10) }</td>
+						<td>${reply.body }</td>
+						<td>${reply.extra__writer }</td>
+						<td>${reply.goodReactionPoint }</td>
+						<td>${reply.badReactionPoint }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
+</section>
+
+
 
 <%@ include file="../common/foot.jspf"%>

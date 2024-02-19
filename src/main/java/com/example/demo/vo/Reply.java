@@ -9,16 +9,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Reply {
 	private int id;
-	private int memberId;
-	private int relId;
 	private String regDate;
 	private String updateDate;
+	private int memberId;
 	private String relTypeCode;
-	private String content;
-	
+	private int relId;
+	private String body;
 	private int goodReactionPoint;
 	private int badReactionPoint;
-	
-	private String nickname;
 
+	private String extra__writer;
+
+	private boolean userCanModify;
+	private boolean userCanDelete;
 }
