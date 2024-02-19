@@ -57,5 +57,17 @@ public class UsrReplyController {
 		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../article/detail?id=" + relId);
 
 	}
+	
+	@RequestMapping("/usr/reply/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id, int relId) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		ResultData reply = replyService.getReply(rq.getLoginedMemberId(),id , relId);
+		
+		replyService.deleteReply(id);
+
+		return Ut.jsReplace("S-1", "댓글 삭제 성공", "../article/detail?id=" + relId);
+	}
 
 }

@@ -31,5 +31,21 @@ public class ReplyService {
 
 		return ResultData.from("S-1", Ut.f("%d번 댓글이 생성되었습니다", id), "id", id);
 	}
+	
+	public List<Reply> getForPrintReplys(int relId, String relTypeCode) {
+		return replyRepository.getForPrintReplys(relId, relTypeCode);
+	}
+
+
+	public ResultData getReply(int loginedMemberId, int id, int relId) {
+		
+		return replyRepository.getReply(loginedMemberId, id, relId);
+	}
+
+
+	public void deleteReply(int id) {
+		replyRepository.deleteReply(id);
+		
+	}
 
 }

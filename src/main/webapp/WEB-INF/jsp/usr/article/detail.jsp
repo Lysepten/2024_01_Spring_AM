@@ -291,16 +291,16 @@
 	</c:if>
 	<div class="mx-auto">
 		<h2>댓글 리스트(${repliesCount })</h2>
-		<table class="table-box-1 table" border="1">
+		<table class="table-box-2 table table-zebra" border="1">
 			<colgroup>
-				<col style="width: 10%" />
 				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
+				<col style="width: 40%" />
+				<col style="width: 20%" />
+<%-- 				<col style="width: 10%" /> --%>
+<%-- 				<col style="width: 10%" /> --%>
 			</colgroup>
 			<thead>
 				<tr>
-					<th>번호</th>
 					<th>날짜</th>
 					<th>내용</th>
 					<th>작성자</th>
@@ -311,13 +311,16 @@
 			<tbody>
 
 				<c:forEach var="reply" items="${replies }">
-					<tr class="hover">
-						<td>${reply.id }</td>
+					<tr class="">
 						<td>${reply.regDate.substring(0,10) }</td>
-						<td>${reply.body }</td>
-						<td>${reply.extra__writer }</td>
-						<td>${reply.goodReactionPoint }</td>
-						<td>${reply.badReactionPoint }</td>
+						<td>${reply.body } <c:if test="${loginedMemberId == reply.memberId }"> &nbsp &nbsp
+			<a class="btn btn-outline btn-warning btn-xs" href="../article/domodify?id=${reply.id }&relId=${article.id }" onclick="">수정</a>
+				<a class="btn btn-outline btn-error btn-xs" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+					href="../reply/doDelete?id=${reply.id }&relId=${article.id }">삭제</a>
+			</c:if></td>
+						<td>🧑${reply.extra__writer }</td>
+						<td><button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReaction(${param.id})">👍 ${reply.goodReactionPoint }</button></td>
+						<td><button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReaction(${param.id})">👎 ${reply.badReactionPoint }</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
