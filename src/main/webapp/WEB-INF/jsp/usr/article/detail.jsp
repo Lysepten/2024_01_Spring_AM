@@ -270,14 +270,18 @@ function doReply() {
 		<tbody>
 			<c:forEach var="reply" items="${replys }">
 				<tr class="">
+					<td>
+						<button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReaction(${param.id})">👍</button>
+						<button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReaction(${param.id})">👎</button>
+					</td>
 					<td class="text-sm replytb">댓글 작성일 :${reply.regDate.substring(2,10) }</td>
 					<td class="text-sm replytb">댓글 수정일 : ${reply.updateDate.substring(2,10) }</td>
 					<td class="text-sm replytb">🧑${reply.nickname }</td>
 					<td class="text-sm replytb modifyBf">댓글 내용 : ${reply.content }
 			<c:if test="${loginedMemberId == reply.memberId }">
-			<a class="btn btn-outline btn-warning btn-xs" href="../article/modify?id=${reply.id }" onclick="">수정</a>
+			<a class="btn btn-outline btn-warning btn-xs" href="../article/domodify?id=${reply.id }&relId=${article.id }" onclick="">수정</a>
 				<a class="btn btn-outline btn-error btn-xs" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../reply/doDelete?id=${reply.id }">삭제</a>
+					href="../reply/doDelete?id=${reply.id }&relId=${article.id }">삭제</a>
 			</c:if>
 					</td>
 				</tr>

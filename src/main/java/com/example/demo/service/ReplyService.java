@@ -34,12 +34,6 @@ public class ReplyService {
 			return ResultData.from("F-1", "댓글 생성 실패");
 		}
 
-//		switch (relTypeCode) {
-//		case "article":
-//			articleService.increaseGoodReactionPoint(relId);
-//			break;
-//		}
-
 		return ResultData.from("S-1", "댓글 생성!");
 	}
 
@@ -49,9 +43,9 @@ public class ReplyService {
 	}
 
 
-	public ResultData getReply(int loginedMemberId, String relTypeCode, int relId) {
+	public ResultData getReply(int loginedMemberId, int id, int relId) {
 		
-		return replyRepository.getReply(loginedMemberId, relTypeCode, relId);
+		return replyRepository.getReply(loginedMemberId, id, relId);
 	}
 
 

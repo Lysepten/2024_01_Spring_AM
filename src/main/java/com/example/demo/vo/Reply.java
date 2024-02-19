@@ -16,6 +16,9 @@ public class Reply {
 	private String relTypeCode;
 	private String content;
 	
+	private int goodReactionPoint;
+	private int badReactionPoint;
+	
 	private String nickname;
 
 }

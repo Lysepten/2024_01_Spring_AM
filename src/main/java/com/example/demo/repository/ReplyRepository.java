@@ -48,12 +48,13 @@ public interface ReplyRepository {
 			FROM `reply` AS R
 			INNER JOIN `member` AS M
 			ON R.memberId = M.id
-			WHERE relTypeCode = #{relTypeCode}
-			AND relId = #{relId}
+			WHERE R.relId = #{relId}
+			AND R.memberId = #{loginedMemberId}
+			AND R.id = #{id}
 			ORDER BY id DESC
 			LIMIT 1;
 			""")
-	public ResultData getReply(int loginedMemberId, String relTypeCode, int relId);
+	public ResultData getReply(int loginedMemberId, int id, int relId);
 
 	@Delete("DELETE FROM `reply` WHERE id = #{id}")
 	public void deleteReply(int id);

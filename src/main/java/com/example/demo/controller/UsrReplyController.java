@@ -48,40 +48,28 @@ public class UsrReplyController {
 	}
 
 	
-	@RequestMapping("/usr/reply/dolist")
-	@ResponseBody
-	public Object dolist(Model model, String relTypeCode, int relId) {
-		
-		ResultData replys = replyService.getReply(rq.getLoginedMemberId(), relTypeCode, relId);
-		
-//		List<Reply> replys = replyService.getForPrintReplys(relId, relTypeCode);
-		
-//		model.addAttribute("replys", replys);
-
-		if (replys.isFail()) {
-			return ResultData.from(replys.getResultCode(), replys.getMsg());
-		}
-		
-//		return Ut.jsReplace(replyRd.getResultCode(), replyRd.getMsg(), "../article/detail?id=" + relId);
-		
-		return ResultData.from(replys.getResultCode(), replys.getMsg(), "replys", replys);
-	}
+//	@RequestMapping("/usr/reply/dolist")
+//	@ResponseBody
+//	public Object dolist(Model model, String relTypeCode, int relId) {
+//		
+//		ResultData replys = replyService.getReply(rq.getLoginedMemberId(), relTypeCode, relId);
+//
+//		if (replys.isFail()) {
+//			return ResultData.from(replys.getResultCode(), replys.getMsg());
+//		}
+//		
+//		return ResultData.from(replys.getResultCode(), replys.getMsg(), "replys", replys);
+//	}
 	
 	@RequestMapping("/usr/reply/doDelete")
 	@ResponseBody
-	public String doDelete(HttpServletRequest req, int id) {
+	public String doDelete(HttpServletRequest req, int id, int relId) {
 		Rq rq = (Rq) req.getAttribute("rq");
-
-//		Article article = articleService.getArticle(id);
-//		
-//		if (article == null) {
-//			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
-//		}
-
-//		ResultData loginedMemberCanDeleteRd = articleService.userCanDelete(rq.getLoginedMemberId(), article);
 		
-			replyService.deleteReply(id);
+		ResultData reply = replyService.getReply(rq.getLoginedMemberId(),id , relId);
+		
+		replyService.deleteReply(id);
 
-		return "삭제됨";
+		return Ut.jsReplace("S-1", "댓글 삭제 성공", "../article/detail?id=" + relId);
 	}
 }
