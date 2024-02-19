@@ -50,22 +50,29 @@
 <!-- 댓글 버튼-->
 <script>
 
-// $(function () {
-// 	$(".replySubmit").on("click", reply_list);
-// });
-
-function replySubmit(articleId) {
-$.ajax({
-	url: '/usr/reply/dolist',
-	type: 'POST',
-	data: {relTypeCode: 'article', relId: articleId},
-	dataType: 'json',
-	success: function(data){
-	}
+function doReply() {
+	if(isNaN(params.memberId) == true){
+		if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+			var currentUri = encodeURIComponent(window.location.href);
+			window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+		}
+		return;
 	}
 }
 
+
+// function replySubmit(articleId) {
+// $.ajax({
+// 	url: '/usr/reply/dolist',
+// 	type: 'POST',
+// 	data: {relTypeCode: 'article', relId: articleId},
+// 	dataType: 'json',
+// 	success: function(data){
+// 	}
+// 	}
+// }
 </script>
+
 <!-- 좋아요 싫어요  -->
 <script>
 	<!-- 좋아요 싫어요 버튼	-->
@@ -262,25 +269,29 @@ $.ajax({
 		<table class="table-box-2 table table-zebra ">
 		<tbody>
 			<c:forEach var="reply" items="${replys }">
-				<tr class="hover">
-					<td class="text-sm replytb">댓글 생성일 :${reply.regDate.substring(2,10) }</td>
+				<tr class="">
+					<td class="text-sm replytb">댓글 작성일 :${reply.regDate.substring(2,10) }</td>
 					<td class="text-sm replytb">댓글 수정일 : ${reply.updateDate.substring(2,10) }</td>
 					<td class="text-sm replytb">🧑${reply.nickname }</td>
-					<td class="text-sm replytb">댓글 내용 : ${reply.content }</td>
+					<td class="text-sm replytb modifyBf">댓글 내용 : ${reply.content }
+			<c:if test="${loginedMemberId == reply.memberId }">
+			<a class="btn btn-outline btn-warning btn-xs" href="../article/modify?id=${reply.id }" onclick="">수정</a>
+				<a class="btn btn-outline btn-error btn-xs" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+					href="../reply/doDelete?id=${reply.id }">삭제</a>
+			</c:if>
+					</td>
 				</tr>
 			</c:forEach>
-		</tbody>
+			</tbody>
 			</tbody>
 			</table>
 			</div>
-			<c:if test="${rq.isLogined() }">
 			<form action="../reply/dowrite" method="GET">
-		<input class="input input-bordered w-full max-w-xs m-1" type="text" autocomplete="off" name="content" placeholder="댓글 내용을 입력해주세요"/>
+		<input class="input input-bordered w-full my-1" type="text" autocomplete="off" name="content" onclick="doReply()" placeholder="댓글 내용을 입력해주세요"/>
 		<input type="hidden" name="relId" value="${param.id }">
 		<input type="hidden" name="relTypeCode" value="article"/>
-		<input class="btn btn-outline btn-info" type="submit" onclick="replySubmit(${param.id})" value="댓글등록" />
+		<input class="btn btn-outline" type="submit" onclick="replySubmit(${param.id})" value="댓글등록" />
 		</form>
-		</c:if>
 		</section>
 
 <%@ include file="../common/foot.jspf"%>

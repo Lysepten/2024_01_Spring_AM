@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.ReplyService;
 import com.example.demo.util.Ut;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Reply;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrReplyController {
@@ -62,5 +65,23 @@ public class UsrReplyController {
 //		return Ut.jsReplace(replyRd.getResultCode(), replyRd.getMsg(), "../article/detail?id=" + relId);
 		
 		return ResultData.from(replys.getResultCode(), replys.getMsg(), "replys", replys);
+	}
+	
+	@RequestMapping("/usr/reply/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+//		Article article = articleService.getArticle(id);
+//		
+//		if (article == null) {
+//			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
+//		}
+
+//		ResultData loginedMemberCanDeleteRd = articleService.userCanDelete(rq.getLoginedMemberId(), article);
+		
+			replyService.deleteReply(id);
+
+		return "삭제됨";
 	}
 }

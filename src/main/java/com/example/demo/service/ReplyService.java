@@ -54,6 +54,12 @@ public class ReplyService {
 		return replyRepository.getReply(loginedMemberId, relTypeCode, relId);
 	}
 
+
+	public void deleteReply(int id) {
+		replyRepository.deleteReply(id);
+		
+	}
+
 //	public ResultData addBadReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
 //		int affectedRow = reactionPointRepository.addBadReactionPoint(loginedMemberId, relTypeCode, relId);
 //

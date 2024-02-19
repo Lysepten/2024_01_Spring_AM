@@ -55,4 +55,7 @@ public interface ReplyRepository {
 			""")
 	public ResultData getReply(int loginedMemberId, String relTypeCode, int relId);
 
+	@Delete("DELETE FROM `reply` WHERE id = #{id}")
+	public void deleteReply(int id);
+
 }
