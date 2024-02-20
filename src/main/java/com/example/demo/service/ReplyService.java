@@ -48,4 +48,9 @@ public class ReplyService {
 		
 	}
 
+	public ResultData doModify(int id, String body) {
+		replyRepository.doModify(id, body);
+		return null;
+	}
+
 }

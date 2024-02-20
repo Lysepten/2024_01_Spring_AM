@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Reply;
 import com.example.demo.vo.ResultData;
@@ -63,4 +64,11 @@ public interface ReplyRepository {
 
 	@Delete("DELETE FROM `reply` WHERE id = #{id}")
 	public void deleteReply(int id);
+
+	@Update("""
+			UPDATE `reply`
+			SET `body` = #{body}
+			WHERE id = #{id}
+			""")
+	void doModify(int id, String body);
 }

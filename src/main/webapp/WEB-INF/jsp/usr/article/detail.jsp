@@ -11,13 +11,53 @@
 	params.id = parseInt('${param.id}');
 	params.memberId = parseInt('${loginedMemberId}');
 	
-	console.log(params);
-	console.log(params.memberId);
-	
 	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
-	
-	
+</script>
+
+<!-- 댓글 수정 -->
+<script>
+
+$(document).ready(function() {
+    $('.edit-button').click(function() {
+  	  $(this).next('.edit-form').show();
+        $('.replybody').hide();
+        $('.replybodymain').css('position', 'relative');
+        $('.edit-form').css('position', 'absolute');
+        $('.edit-form').css('top','10%');
+    });
+});
+
+
+
+var ReplyModify__submitDone = false;
+
+		function ReplyModify__submit(form) {
+			if (ReplyModify__submitDone) {
+				alert('이미 처리중입니다');
+				return;
+			}
+
+			if (form.body.value.length < 3) {
+				alert('댓글은 3글자 이상 입력해');
+				form.body.focus();
+				return;
+			}
+
+        $.ajax({
+			url: '/usr/reply/doModify',
+			type: 'POST',
+			data: {body: form.body.value, id: form.id.value},
+			dataType: 'json',
+			success: function(data){
+				console.log(form.body.value);
+			  	  $('.edit-form').hide();
+			        $('.replybody').show();
+				$(this).text(form.body.value);
+   				 }
+			});
+		}
+
 </script>
 
 <!-- 조회수 -->
@@ -73,11 +113,6 @@
 			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
-				console.log('data.data1Name : ' + data.data1Name);
-				console.log('data.data1 : ' + data.data1);
-				console.log('data.data2Name : ' + data.data2Name);
-				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
@@ -267,20 +302,14 @@
 		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
 			<input type="hidden" name="relTypeCode" value="article" />
 			<input type="hidden" name="relId" value="${article.id }" />
-			<table class="write-box table-box-1" border="1">
+			<table class="write-box table-box-2 table" border="1">
 				<tbody>
 					<tr>
-						<th>내용</th>
-						<td>
-							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="내용을 입력해주세요" name="body"> </textarea>
-						</td>
+							<input class="input input-bordered w-full my-1" autocomplete="off" type="text"
+								placeholder="내용을 입력해주세요" name="body"> </input>
 					</tr>
 					<tr>
-						<th></th>
-						<td>
-							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
-						</td>
+							<input class="btn btn-outline btn-info btn-sm" type="submit" value="댓글 작성" />
 					</tr>
 				</tbody>
 			</table>
@@ -309,24 +338,31 @@
 				</tr>
 			</thead>
 			<tbody>
-
 				<c:forEach var="reply" items="${replies }">
 					<tr class="">
-						<td>${reply.regDate.substring(0,10) }</td>
-						<td>${reply.body } <c:if test="${loginedMemberId == reply.memberId }"> &nbsp &nbsp
-			<a class="btn btn-outline btn-warning btn-xs" href="../article/domodify?id=${reply.id }&relId=${article.id }" onclick="">수정</a>
-				<a class="btn btn-outline btn-error btn-xs" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+						<td>${reply.regDate.substring(2,10) }</td>
+						<td class="replybodymain">${reply.body }<c:if test="${loginedMemberId == reply.memberId }"> &nbsp &nbsp
+			<button class="btn btn-outline btn-warning btn-xs edit-button replybody"  onclick="">수정</button>
+			<div class="edit-form" style="display: none;">
+			<form action="../reply/doModify" method="POST" onsubmit="ReplyModify__submit(this); return false;">
+       		 <input type="text" class="edit-input input-sm" value="${reply.body }" name="body">
+       		 <input type="hidden" class="edit-input input-sm" value="${reply.id }" name="id">
+       		 <input type="submit" class="btn btn-xs" value="수정완료"/>
+<!--         	<button class="submit-button btn-xs" onclick="">수정완료</button> -->
+        	</form>
+   			 </div>
+				<a class="btn btn-outline btn-error btn-xs replybody" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../reply/doDelete?id=${reply.id }&relId=${article.id }">삭제</a>
 			</c:if></td>
 						<td>🧑${reply.extra__writer }</td>
-						<td><button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReaction(${param.id})">👍 ${reply.goodReactionPoint }</button></td>
-						<td><button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReaction(${param.id})">👎 ${reply.badReactionPoint }</button></td>
+						<td><button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReply(${param.id})">👍 ${reply.goodReactionPoint }</button></td>
+						<td><button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReply(${param.id})">👎 ${reply.badReactionPoint }</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-
+	
 </section>
 
 

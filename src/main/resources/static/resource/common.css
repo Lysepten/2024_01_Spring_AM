@@ -69,7 +69,6 @@ header>div>ul>li {
 }
 
 .table-box-2 th, .table-box-2 td {
-	border: 1px dashed black;
 	padding: 10px;
 	text-align: left;
 }
@@ -83,4 +82,9 @@ header>div>ul>li>ul {
 
 header>div>ul>li:hover>ul {
 	display: block;
+}
+
+.mainHD {
+	background-color: black;
+	color: #c8c8c8;
 }
