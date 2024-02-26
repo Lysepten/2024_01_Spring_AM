@@ -89,6 +89,29 @@ public class UsrMemberController {
 
 		return "usr/member/join";
 	}
+	
+//	@RequestMapping("/usr/home/doPlus")
+//	@ResponseBody
+//	public String doPlus(int num1, int num2) {
+//		String msg = "더하기 성공!";
+//
+//		int rs = num1 + num2;
+//		return rs + "/" + msg + "/S-1";
+//	}
+	
+	@RequestMapping("/usr/member/idck")
+	@ResponseBody
+	public String idck(HttpServletRequest req, String loginId) {
+
+		Member existsMember = memberService.getMemberByLoginId(loginId);
+
+		if (existsMember != null) {
+			return "F-7" +"/" + "이미 사용중인 아이디 입니다";
+		}
+
+		return "S-1" + "/" + "사용 가능한 아이디 입니다.";
+	}
+	
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody

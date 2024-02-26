@@ -11,53 +11,13 @@
 	params.id = parseInt('${param.id}');
 	params.memberId = parseInt('${loginedMemberId}');
 	
+	console.log(params);
+	console.log(params.memberId);
+	
 	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
-</script>
-
-<!-- 댓글 수정 -->
-<script>
-
-$(document).ready(function() {
-    $('.edit-button').click(function() {
-  	  $(this).next('.edit-form').show();
-        $('.replybody').hide();
-        $('.replybodymain').css('position', 'relative');
-        $('.edit-form').css('position', 'absolute');
-        $('.edit-form').css('top','10%');
-    });
-});
-
-
-
-var ReplyModify__submitDone = false;
-
-		function ReplyModify__submit(form) {
-			if (ReplyModify__submitDone) {
-				alert('이미 처리중입니다');
-				return;
-			}
-
-			if (form.body.value.length < 3) {
-				alert('댓글은 3글자 이상 입력해');
-				form.body.focus();
-				return;
-			}
-
-        $.ajax({
-			url: '/usr/reply/doModify',
-			type: 'POST',
-			data: {body: form.body.value, id: form.id.value},
-			dataType: 'json',
-			success: function(data){
-				console.log(form.body.value);
-			  	  $('.edit-form').hide();
-			        $('.replybody').show();
-				$(this).text(form.body.value);
-   				 }
-			});
-		}
-
+	
+	
 </script>
 
 <!-- 조회수 -->
@@ -113,6 +73,11 @@ var ReplyModify__submitDone = false;
 			data: {relTypeCode: 'article', relId: articleId},
 			dataType: 'json',
 			success: function(data){
+				console.log(data);
+				console.log('data.data1Name : ' + data.data1Name);
+				console.log('data.data1 : ' + data.data1);
+				console.log('data.data2Name : ' + data.data2Name);
+				console.log('data.data2 : ' + data.data2);
 				if(data.resultCode.startsWith('S-')){
 					var likeButton = $('#likeButton');
 					var likeCount = $('#likeCount');
@@ -227,7 +192,64 @@ var ReplyModify__submitDone = false;
 			form.submit();
 
 		}
-	</script>
+</script>
+<!-- 댓글 수정 -->
+<script>
+function doModifyReply(replyId) {
+// 	if(isNaN(params.memberId) == true){
+// 		if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+// 			var currentUri = encodeURIComponent(window.location.href);
+// 			window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+// 		}
+// 		return;
+// 	}
+	let replyBody = $('#reply-text');
+	console.log(replyId);
+	console.log(replyBody);
+	
+	$.ajax({
+		url: '/usr/reply/doModify',
+		type: 'POST',
+		data: {id: replyId, body: ${reply.body }},
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+			console.log('data.data1Name : ' + data.data1Name);
+			console.log('data.data1 : ' + data.data1);
+			console.log('data.data2Name : ' + data.data2Name);
+			console.log('data.data2 : ' + data.data2);
+			if(data.resultCode.startsWith('S-')){
+				var likeButton = $('#likeButton');
+				var likeCount = $('#likeCount');
+				var DislikeButton = $('#DislikeButton');
+				var DislikeCount = $('#DislikeCount');
+				
+				if(data.resultCode == 'S-1'){
+					likeButton.toggleClass('btn-outline');
+					likeCount.text(data.data1);
+				}else if(data.resultCode == 'S-2'){
+					DislikeButton.toggleClass('btn-outline');
+					DislikeCount.text(data.data2);
+					likeButton.toggleClass('btn-outline');
+					likeCount.text(data.data1);
+				}else {
+					likeButton.toggleClass('btn-outline');
+					likeCount.text(data.data1);
+				}
+				
+			}else {
+				alert(data.msg);
+			}
+	
+		},
+		error: function(jqXHR,textStatus,errorThrown) {
+			alert('좋아요 오류 발생 : ' + textStatus);
+
+		}
+		
+	});
+}
+</script>
 
 
 <section class="mt-8 text-xl px-4 ">
@@ -302,14 +324,20 @@ var ReplyModify__submitDone = false;
 		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
 			<input type="hidden" name="relTypeCode" value="article" />
 			<input type="hidden" name="relId" value="${article.id }" />
-			<table class="write-box table-box-2 table" border="1">
+			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>
-							<input class="input input-bordered w-full my-1" autocomplete="off" type="text"
-								placeholder="내용을 입력해주세요" name="body"> </input>
+						<th>내용</th>
+						<td>
+							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="내용을 입력해주세요" name="body"> </textarea>
+						</td>
 					</tr>
 					<tr>
-							<input class="btn btn-outline btn-info btn-sm" type="submit" value="댓글 작성" />
+						<th></th>
+						<td>
+							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -320,49 +348,59 @@ var ReplyModify__submitDone = false;
 	</c:if>
 	<div class="mx-auto">
 		<h2>댓글 리스트(${repliesCount })</h2>
-		<table class="table-box-2 table table-zebra" border="1">
+		<table class="table-box-1 table" border="1">
 			<colgroup>
+				<col style="width: 10%" />
 				<col style="width: 20%" />
-				<col style="width: 40%" />
-				<col style="width: 20%" />
-<%-- 				<col style="width: 10%" /> --%>
-<%-- 				<col style="width: 10%" /> --%>
+				<col style="width: 60%" />
+				<col style="width: 10%" />
 			</colgroup>
 			<thead>
 				<tr>
+					<th>번호</th>
 					<th>날짜</th>
 					<th>내용</th>
 					<th>작성자</th>
 					<th>좋아요</th>
 					<th>싫어요</th>
+					<th>수정</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
+
 				<c:forEach var="reply" items="${replies }">
-					<tr class="">
-						<td>${reply.regDate.substring(2,10) }</td>
-						<td class="replybodymain">${reply.body }<c:if test="${loginedMemberId == reply.memberId }"> &nbsp &nbsp
-			<button class="btn btn-outline btn-warning btn-xs edit-button replybody"  onclick="">수정</button>
-			<div class="edit-form" style="display: none;">
-			<form action="../reply/doModify" method="POST" onsubmit="ReplyModify__submit(this); return false;">
-       		 <input type="text" class="edit-input input-sm" value="${reply.body }" name="body">
-       		 <input type="hidden" class="edit-input input-sm" value="${reply.id }" name="id">
-       		 <input type="submit" class="btn btn-xs" value="수정완료"/>
-<!--         	<button class="submit-button btn-xs" onclick="">수정완료</button> -->
-        	</form>
-   			 </div>
-				<a class="btn btn-outline btn-error btn-xs replybody" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../reply/doDelete?id=${reply.id }&relId=${article.id }">삭제</a>
-			</c:if></td>
-						<td>🧑${reply.extra__writer }</td>
-						<td><button id="likeButton" class="btn btn-outline btn-success btn-xs" onclick="doGoodReply(${param.id})">👍 ${reply.goodReactionPoint }</button></td>
-						<td><button id="DislikeButton" class="btn btn-outline btn-error btn-xs" onclick="doBadReply(${param.id})">👎 ${reply.badReactionPoint }</button></td>
+					<tr class="hover">
+						<td>${reply.id }</td>
+						<td>${reply.regDate.substring(0,10) }</td>
+						<td>
+							<span id="reply-${reply.id }">${reply.body }</span>
+							<div id="edit-form-${reply.id }" style="display: none;">
+								<input type="text" value="${reply.body }" id="reply-text-${reply.id }" />
+							</div>
+						</td>
+						<td>${reply.extra__writer }</td>
+						<td>${reply.goodReactionPoint }</td>
+						<td>${reply.badReactionPoint }</td>
+						<td>
+							<c:if test="${reply.userCanModify }">
+								<%-- 							href="../reply/modify?id=${reply.id }" --%>
+								<a style="white-space: nowrap;" class="btn btn-outline" onclick="doModifyReply(${reply.id});">수정</a>
+								<a style="white-space: nowrap; display: none;" class="btn btn-outline">저장</a>
+							</c:if>
+						</td>
+						<td>
+							<c:if test="${reply.userCanDelete }">
+								<a style="white-space: nowrap;" class="btn btn-outline"
+									onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${reply.id }">삭제</a>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	
+
 </section>
 
 

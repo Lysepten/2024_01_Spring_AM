@@ -68,11 +68,6 @@ header>div>ul>li {
 	text-align: center;
 }
 
-.table-box-2 th, .table-box-2 td {
-	padding: 10px;
-	text-align: left;
-}
- 
 /*네비게이션 2차메뉴 */
 header>div>ul>li>ul {
 	display: none;
@@ -82,9 +77,4 @@ header>div>ul>li>ul {
 
 header>div>ul>li:hover>ul {
 	display: block;
-}
-
-.mainHD {
-	background-color: black;
-	color: #c8c8c8;
 }

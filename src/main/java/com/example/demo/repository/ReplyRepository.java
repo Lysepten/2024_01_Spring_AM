@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Reply;
-import com.example.demo.vo.ResultData;
 
 @Mapper
 public interface ReplyRepository {
@@ -40,35 +39,26 @@ public interface ReplyRepository {
 	public int getLastInsertId();
 
 	@Select("""
-			SELECT R.*, M.nickname
-			FROM `reply` AS R
-			INNER JOIN `member` AS M
-			ON R.memberId = M.id
-			WHERE relTypeCode = #{relTypeCode}
-			AND relId = #{relId}
+				SELECT R.*
+				FROM reply AS R
+				WHERE R.id = #{id}
 			""")
-	public List<Reply> getForPrintReplys(int relId, String relTypeCode);
+	Reply getReply(int id);
 
-	@Select("""
-			SELECT R.*, M.nickname
-			FROM `reply` AS R
-			INNER JOIN `member` AS M
-			ON R.memberId = M.id
-			WHERE R.relId = #{relId}
-			AND R.memberId = #{loginedMemberId}
-			AND R.id = #{id}
-			ORDER BY id DESC
-			LIMIT 1;
+	@Delete("""
+				DELETE FROM reply
+				WHERE id = #{id}
 			""")
-	public ResultData getReply(int loginedMemberId, int id, int relId);
-
-	@Delete("DELETE FROM `reply` WHERE id = #{id}")
-	public void deleteReply(int id);
+	void deleteReply(int id);
 
 	@Update("""
-			UPDATE `reply`
-			SET `body` = #{body}
+			UPDATE reply
+				<set>
+					<if test="body != null and body != ''">`body` = #{body},</if>
+					updateDate = NOW()
+				</set>
 			WHERE id = #{id}
-			""")
-	void doModify(int id, String body);
+				""")
+	public void modifyReply(int id, String body);
+
 }

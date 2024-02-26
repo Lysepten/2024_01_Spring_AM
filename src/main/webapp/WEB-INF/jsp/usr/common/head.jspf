@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
-
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
@@ -27,7 +26,7 @@
 			<div class="flex-grow"></div>
 			<ul class="flex">
 				<li><a class="hover:underline" href="/">HOME</a></li>
-				<li><a class="hover:underline" href="../article/list">LIST</a>
+				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">LIST</a>
 					<ul>
 						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">NOTICE</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">FREE</a></li>

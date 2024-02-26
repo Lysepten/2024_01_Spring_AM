@@ -21,7 +21,13 @@ public class ReplyService {
 	}
 
 	public List<Reply> getForPrintReplies(int loginedMemberId, String relTypeCode, int relId) {
-		return replyRepository.getForPrintReplies(loginedMemberId, relTypeCode, relId);
+		List<Reply> replies = replyRepository.getForPrintReplies(loginedMemberId, relTypeCode, relId);
+
+		for (Reply reply : replies) {
+			controlForPrintData(loginedMemberId, reply);
+		}
+
+		return replies;
 	}
 
 	public ResultData<Integer> writeReply(int loginedMemberId, String relTypeCode, int relId, String body) {
@@ -31,26 +37,46 @@ public class ReplyService {
 
 		return ResultData.from("S-1", Ut.f("%d번 댓글이 생성되었습니다", id), "id", id);
 	}
-	
-	public List<Reply> getForPrintReplys(int relId, String relTypeCode) {
-		return replyRepository.getForPrintReplys(relId, relTypeCode);
+
+	private void controlForPrintData(int loginedMemberId, Reply reply) {
+		if (reply == null) {
+			return;
+		}
+		ResultData userCanModifyRd = userCanModify(loginedMemberId, reply);
+		reply.setUserCanModify(userCanModifyRd.isSuccess());
+
+		ResultData userCanDeleteRd = userCanDelete(loginedMemberId, reply);
+		reply.setUserCanDelete(userCanDeleteRd.isSuccess());
 	}
 
+	public ResultData userCanDelete(int loginedMemberId, Reply reply) {
 
-	public ResultData getReply(int loginedMemberId, int id, int relId) {
-		
-		return replyRepository.getReply(loginedMemberId, id, relId);
+		if (reply.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-2", Ut.f("%d번 댓글에 대한 삭제 권한이 없습니다", reply.getId()));
+		}
+
+		return ResultData.from("S-1", Ut.f("%d번 댓글이 삭제 되었습니다", reply.getId()));
 	}
 
+	public ResultData userCanModify(int loginedMemberId, Reply reply) {
 
-	public void deleteReply(int id) {
+		if (reply.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-2", Ut.f("%d번 댓글에 대한 수정 권한이 없습니다", reply.getId()));
+		}
+
+		return ResultData.from("S-1", Ut.f("%d번 댓글을 수정했습니다", reply.getId()));
+	}
+
+	public Reply getReply(int id) {
+		return replyRepository.getReply(id);
+	}
+
+	public ResultData deleteReply(int id) {
 		replyRepository.deleteReply(id);
-		
+		return ResultData.from("S-1", Ut.f("%d번 댓글을 삭제했습니다", id));
 	}
 
-	public ResultData doModify(int id, String body) {
-		replyRepository.doModify(id, body);
-		return null;
+	public void modifyReply(int id, String body) {
+		replyRepository.modifyReply(id, body);
 	}
-
 }
