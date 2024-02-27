@@ -10,8 +10,6 @@
 
 function idck() {
 	var form = document.form2;
-	
-	console.log(111)
 
 	$.get("./idck", {
 		loginId : form.loginId.value
@@ -19,11 +17,16 @@ function idck() {
 		data = data.split('/');
 		var rs = data[0];
 		var msg = data[1];
+		
+		if(form.loginId.value.trim() == "" || form.loginId.value.indexOf(" ") != -1) {
+			$('.rs-msg').text("여백은 사용 할 수 없습니다.");
+			return;
+		}
+		
 		$('.rs').text(rs);
 		$('.rs-msg').text(msg);
 
 	}, 'html');
-
 }
 </script>
 
@@ -34,7 +37,7 @@ function idck() {
 				<tbody>
 					<tr>
 						<th>아이디</th>
-						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+						<td class="flex tdbox1"><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 							placeholder="아이디를 입력해주세요" name="loginId" onkeyup="idck()"/>
 							<div class="rs-msg"></div>
 							</td>
