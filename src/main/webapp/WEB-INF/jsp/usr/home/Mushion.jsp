@@ -140,11 +140,7 @@
       style="position: absolute; left: 941.58px; top: 71.5px;"
       preserveAspectRatio="xMidYMid meet"
     >
-      <path
-        d="M10.0668 1.25L6.03981 5.29161L2.01281 1.25L10.0668 1.25Z"
-        fill="white"
-        stroke="white"
-      ></path>
+
     </svg>
   </div>
 </div>
@@ -161,10 +157,10 @@
     Mushion.
   </p>
   <img
-    src="dall·e-2024-02-23-13.32.32---design-a-logo-for-&#x27;mushion&#x27;,-a-community-site-about-fashion-and-music,-incorporating-a-wind-chime-transformed-into-a-necklace-shape-2.jpeg"
+    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
     class="w-12 h-12 absolute left-[150px] top-[45px] rounded-[50px] object-cover"
   />
-  <p class="absolute left-[161px] top-[309px] text-[118px] font-bold text-left text-[#e9ebf0]">
+  <p class="absolute left-[161px] top-[280px] text-[118px] font-bold text-left text-[#e9ebf0]">
     Mushion.
   </p>
   <p
@@ -173,13 +169,12 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua.
   </p>
-  <div class="w-[217px] h-16 opacity-75">
+
     <div
       class="w-[217px] h-16 absolute left-[166px] top-[493px] rounded-xl border-2 border-[#028baf]"
     ></div>
-    <p class="absolute left-[226px] top-[509px] text-[28px] text-left text-[#028baf]">Explore</p>
-  </div>
-  <div class="w-[196px] h-16">
+    <p class="absolute left-[226px] top-[505px] text-[28px] text-left text-[#028baf]">Explore</p>
+
     <svg
       width="64"
       height="64"
@@ -196,7 +191,7 @@
       viewBox="0 0 23 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-[467.5px] top-[508.5px] opacity-75"
+      class="absolute left-[441px] top-[510px] opacity-75"
       preserveAspectRatio="xMidYMid meet"
     >
       <path
@@ -208,9 +203,9 @@
     <p class="absolute left-[499px] top-[514px] opacity-75 text-xl text-left text-white">
       Live Demo...
     </p>
-  </div>
+
   <img
-    src="search-interface-symbol-2.png"
+    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
     class="w-[26px] h-[26px] absolute left-[1566px] top-14 opacity-75 object-cover"
   />
   
@@ -222,46 +217,14 @@
   
   
   <img
-    src="bag-4.png"
+    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
     class="w-[26px] h-[26px] absolute left-[1651px] top-14 opacity-75 object-cover"
-  /><svg
-    width="31"
-    height="17"
-    viewBox="0 0 31 17"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="w-[31px] h-[13px] opacity-75"
-    preserveAspectRatio="none"
-  >
-    <g opacity="0.75">
-      <line
-        x1="2"
-        y1="2"
-        x2="29"
-        y2="2"
-        stroke="white"
-        stroke-width="4"
-        stroke-linecap="round"
-      ></line>
-      <line
-        x1="10"
-        y1="15"
-        x2="29"
-        y2="15"
-        stroke="white"
-        stroke-width="4"
-        stroke-linecap="round"
-      ></line>
-    </g>
-  </svg>
+  />
   
   
   
-  
-<div style="width: 1574px; height: 48px; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));">
-  <div style="width: 1574px; height: 48px;">
     <p
-      style="width: 420px; height: 48px; position: absolute; left: 759px; top: 1035px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
+      style="width: 420px; height: 48px; position: absolute; left: 759px; top: 1215px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
     >
       <span
         style="width: 420px; height: 48px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
@@ -276,17 +239,16 @@
       >
     </p>
     <p
-      style="width: 420px; height: 48px; position: absolute; left: 1327px; top: 1035px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
+      style="width: 420px; height: 48px; position: absolute; left: 1327px; top: 1215px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
     >
       Fashion
     </p>
     <p
-      style="width: 420px; height: 48px; position: absolute; left: 173px; top: 1035px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
+      style="width: 420px; height: 48px; position: absolute; left: 173px; top: 1215px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
     >
       Music
     </p>
-  </div>
-</div>
+
   
   
   
