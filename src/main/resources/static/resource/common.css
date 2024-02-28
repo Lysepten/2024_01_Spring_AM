@@ -81,10 +81,15 @@ header>div>ul>li:hover>ul {
 
 .rs-msg {
 	position : absolute;
-	left: 100%;
+	bottom: 100%;
 	white-space : nowrap;
 }
 
 .tdbox1 {
 	position: relative;
+}
+
+.mainHD {
+	background-color: black;
+	color: #c8c8c8;
 }
