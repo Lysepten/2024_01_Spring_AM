@@ -1,10 +1,8 @@
-.msbody {
-	position: relative;
-width: 1903px;
-height: 1440px;
-
-background: #071015;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+/* 폰트 */
+.section {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .msfont {
@@ -13,37 +11,35 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-style: normal;
 }
 
+.interfont {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 900;
+}
 
-/* Rectangle 6 */
+.maintxsize {
+	font-size: 22px;
+}
+/* body */
+.msbody {
+	position: relative;
+width: 1903px;
+height: 1440px;
 
-box-sizing: border-box;
-
-position: absolute;
-width: 1619px;
-height: 434.6px;
-left: 151px;
-top: 861.5px;
-
-background: #E9EBF0;
-box-shadow: 0px 9px 18.4px rgba(0, 0, 0, 0.25);
-backdrop-filter: blur(12.5px);
-/* Note: backdrop-filter has minimal browser support */
-border-radius: 77px;
-
-
-/* Rectangle 13 */
-
-position: absolute;
-width: 1920px;
+background: #071015;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* header */
+.msheader {
+width: 1903px;
 height: 140px;
 left: 0px;
 top: 0px;
-
 background: #0D1E27;
+}
 
-
-/* Mushion. */
-
+/* Mushion. logo */
+.test1 {
 position: absolute;
 width: 132px;
 height: 34px;
@@ -55,11 +51,92 @@ font-style: normal;
 font-weight: 900;
 font-size: 28px;
 line-height: 34px;
-/* identical to box height */
 
-color: #FFFFFF;
+color: white;
+}
 
-opacity: 0.75;
+/* Home */
+.ms-home {
+position: absolute;
+width: 68px;
+height: 29px;
+left: 685px;
+top: 55px;
+color: #c8c8c8;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-size: 24px;
+font-weight: 500;
+line-height: 29px;
+
+white-space: nowrap;
+}
+
+
+/* News */
+.ms-news {
+	position: absolute;
+width: 59px;
+height: 29px;
+left: 1009px;
+top: 55px;
+color: #c8c8c8;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-size: 24px;
+font-weight: 500;
+line-height: 29px;
+
+white-space: nowrap;
+}
+
+/* head-fashion-music */
+.ms-fm {
+	position: absolute;
+width: 105.7px;
+height: 29px;
+left: 800px;
+top: 55px;
+color: #c8c8c8;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-size: 24px;
+font-weight: 500;
+line-height: 29px;
+
+white-space: nowrap;
+}
+
+
+/* more */
+.ms-more {
+	position: absolute;
+width: 92px;
+height: 29px;
+left: 1133px;
+top: 55px;
+color: #c8c8c8;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-size: 24px;
+font-weight: 500;
+line-height: 29px;
+
+white-space: nowrap;
+}
+
+
+/* Group 1 */
+
+position: absolute;
+width: 122.08px;
+height: 29px;
+left: 820px;
+top: 55px;
 
 
 /* DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape 2 */
@@ -248,97 +325,6 @@ top: 55px;
 
 opacity: 0.75;
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-
-/* Home */
-
-position: absolute;
-width: 68px;
-height: 29px;
-left: 685px;
-top: 55px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #FFFFFF;
-
-border: 1px solid #000000;
-
-
-/* More */
-
-position: absolute;
-width: 59px;
-height: 29px;
-left: 1009px;
-top: 55px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #FFFFFF;
-
-border: 1px solid #000000;
-
-
-/* Contact */
-
-position: absolute;
-width: 92px;
-height: 29px;
-left: 1133px;
-top: 55px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #FFFFFF;
-
-border: 1px solid #000000;
-
-
-/* Group 1 */
-
-position: absolute;
-width: 122.08px;
-height: 29px;
-left: 820px;
-top: 55px;
-
-
-
-/* List Type */
-
-position: absolute;
-width: 105.7px;
-height: 29px;
-left: 820px;
-top: 55px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #FFFFFF;
-
-border: 1px solid #000000;
-
 
 /* Polygon 1 */
 

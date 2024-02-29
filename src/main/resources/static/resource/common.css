@@ -73,6 +73,11 @@ header>div>ul>li:hover>ul {
 	display: block;
 }
 
-.msheader {
-	
+header>div>ul>li:hover>ul {
+	display: block;
+}
+
+.mainHD {
+	background-color: #0D1E27;
+	color: #c8c8c8;
 }

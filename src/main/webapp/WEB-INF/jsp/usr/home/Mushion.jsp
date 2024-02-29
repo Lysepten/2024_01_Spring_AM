@@ -100,7 +100,7 @@
     Mushion.
   </p>
   <p
-    class="w-[893px] absolute left-[167px] top-[300px] opacity-75 text-[23px] font-medium text-left text-white"
+    class="w-[893px] absolute left-[167px] top-[300px] opacity-75 text-[22px] font-medium text-left text-white"
   >
     패션과 음악을 즐기는 사람들이 함께 모이는 활기찬 커뮤니티 허브에 오신 것을 환영합니다!
     <br />
