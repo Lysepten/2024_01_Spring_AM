@@ -79,17 +79,7 @@ header>div>ul>li:hover>ul {
 	display: block;
 }
 
-.rs-msg {
-	position : absolute;
-	bottom: 100%;
-	white-space : nowrap;
-}
-
-.tdbox1 {
-	position: relative;
-}
-
-.mainHD {
-	background-color: black;
-	color: #c8c8c8;
+.section {
+	font-size: 0;
+/* 	border: 5px solid yellow; */
 }

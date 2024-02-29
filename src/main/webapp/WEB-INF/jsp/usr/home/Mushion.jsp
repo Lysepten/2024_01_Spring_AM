@@ -1,24 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<meta charset="UTF-8">
-
+<!-- mushion head -->
+<%@ include file="../common/mushionHead.jspf"%>
 <link rel="stylesheet" href="/resource/common.css" />
 
-<script src="/resource/common.js" defer="defer"></script>
-<!-- 테일윈드 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
-
-<!-- daisy ui 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
-
-<!-- 폰트어썸 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-<!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<script src="https://cdn.tailwindcss.com"></script>
+<body class="section">
 
 <div
   class="w-[1920px] h-[1440px] relative overflow-hidden bg-[#071015]"
@@ -101,79 +87,21 @@
     </defs>
   </svg>
   
-  
-  <div class="w-[1920px] h-[140px] flex relative left-[-1px] top-[-1px] bg-[#0d1e27]">
-  
-  
-  
-  
-  <div
-  style="width: 540px; height: 29px; opacity: 0.75; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));"
->
-  <p
-    style="position: absolute; left: 685px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
-  >
-    Home
-  </p>
-  <p
-    style="position: absolute; left: 1009px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
-  >
-    More
-  </p>
-  <p
-    style="position: absolute; left: 1133px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
-  >
-    Contact
-  </p>
-  <div style="width: 122.08px; height: 29px;">
-    <p
-      style="width: 105.7px; position: absolute; left: 820px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
-    >
-      List Type
-    </p>
-    <svg
-      width="12"
-      height="6"
-      viewBox="0 0 12 6"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style="position: absolute; left: 941.58px; top: 71.5px;"
-      preserveAspectRatio="xMidYMid meet"
-    >
-
-    </svg>
-  </div>
-</div>
-
-
-  
-  
-  </div>
-  
-  
-  <p
-    class="absolute left-[212px] top-[53px] opacity-75 text-[28px] font-black text-left text-white"
-  >
-    Mushion.
-  </p>
-  <img
-    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
-    class="w-12 h-12 absolute left-[150px] top-[45px] rounded-[50px] object-cover"
-  />
-  <p class="absolute left-[161px] top-[280px] text-[118px] font-bold text-left text-[#e9ebf0]">
+  <p class="absolute left-[161px] top-[250px] text-[118px] font-bold text-left text-[#e9ebf0]">
     Mushion.
   </p>
   <p
-    class="w-[893px] absolute left-[167px] top-[418px] opacity-75 text-[23px] font-medium text-left text-white"
+    class="w-[893px] absolute left-[167px] top-[400px] opacity-75 text-[23px] font-medium text-left text-white"
   >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
+    패션과 음악을 즐기는 사람들이 함께 모이는 활기찬 커뮤니티 허브에 오신 것을 환영합니다!
+    <br />
+    생동감 넘치는 스타일과 매력적인 멜로디를 탐험해 보세요.
   </p>
 
-    <div
+    <button
       class="w-[217px] h-16 absolute left-[166px] top-[493px] rounded-xl border-2 border-[#028baf]"
-    ></div>
-    <p class="absolute left-[226px] top-[505px] text-[28px] text-left text-[#028baf]">Explore</p>
+    ><p class="text-[28px] text-[#028baf]">Explore</p>
+    </button>
 
     <svg
       width="64"
@@ -201,28 +129,9 @@
       ></path>
     </svg>
     <p class="absolute left-[499px] top-[514px] opacity-75 text-xl text-left text-white">
-      Live Demo...
+      추천 음악 듣기
     </p>
 
-  <img
-    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
-    class="w-[26px] h-[26px] absolute left-[1566px] top-14 opacity-75 object-cover"
-  />
-  
-  
-  
-
-  
-  
-  
-  
-  <img
-    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
-    class="w-[26px] h-[26px] absolute left-[1651px] top-14 opacity-75 object-cover"
-  />
-  
-  
-  
     <p
       style="width: 420px; height: 48px; position: absolute; left: 759px; top: 1215px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
     >
@@ -267,3 +176,4 @@
     class="w-[402.5px] h-[450px] absolute left-[758px] top-[731px] object-cover"
   />
 </div>
+</body>
