@@ -3,11 +3,20 @@
 <!-- mushion head -->
 <%@ include file="../common/mushionHead.jspf"%>
 <link rel="stylesheet" href="/resource/common.css" />
+<link rel="stylesheet" href="/resource/mushion.css" />
+
+<!-- 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+</style>
 
 <body class="section">
-
 <div
-  class="w-[1920px] h-[1440px] relative overflow-hidden bg-[#071015]"
+  class="msbody"
   style="box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.25);"
 >
   <svg
@@ -16,7 +25,7 @@
     viewBox="0 0 1657 458"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    class="absolute left-[149.5px] top-[860px]"
+    class="absolute left-[130px] top-[860px]"
     preserveAspectRatio="none"
   >
     <g filter="url(#filter0_bd_119_383)">
@@ -87,11 +96,11 @@
     </defs>
   </svg>
   
-  <p class="absolute left-[161px] top-[250px] text-[118px] font-bold text-left text-[#e9ebf0]">
+  <p class=" msfont absolute left-[161px] top-[150px] text-[118px] font-bold text-left text-[#e9ebf0]">
     Mushion.
   </p>
   <p
-    class="w-[893px] absolute left-[167px] top-[400px] opacity-75 text-[23px] font-medium text-left text-white"
+    class="w-[893px] absolute left-[167px] top-[300px] opacity-75 text-[23px] font-medium text-left text-white"
   >
     패션과 음악을 즐기는 사람들이 함께 모이는 활기찬 커뮤니티 허브에 오신 것을 환영합니다!
     <br />
@@ -99,7 +108,7 @@
   </p>
 
     <button
-      class="w-[217px] h-16 absolute left-[166px] top-[493px] rounded-xl border-2 border-[#028baf]"
+      class="w-[217px] h-16 absolute left-[166px] top-[393px] rounded-xl border-2 border-[#028baf]"
     ><p class="text-[28px] text-[#028baf]">Explore</p>
     </button>
 <a href="">
@@ -109,7 +118,7 @@
       viewBox="0 0 64 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-[418px] top-[493px] opacity-75"
+      class="absolute left-[418px] top-[393px] opacity-75"
       preserveAspectRatio="xMidYMid meet"
     >
       <circle opacity="0.75" cx="32" cy="32" r="31" stroke="white" stroke-width="2"></circle></svg
@@ -119,7 +128,7 @@
       viewBox="0 0 23 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-[441px] top-[510px] opacity-75"
+      class="absolute left-[441px] top-[410px] opacity-75"
       preserveAspectRatio="xMidYMid meet"
     >
       <path
@@ -130,7 +139,7 @@
     </svg>
     </a>
     
-    <p class="absolute left-[499px] top-[514px] opacity-75 text-xl text-left text-white">
+    <p class="absolute left-[499px] top-[414px] opacity-75 text-xl text-left text-white">
       추천 음악 듣기..
     </p>
 
@@ -167,7 +176,7 @@
   
   
   
-  <p class="absolute left-[1525px] top-[429px] text-[32px] font-semibold text-left text-white">
+  <p class="absolute left-[1525px] top-[320px] text-[32px] font-semibold text-left text-white">
     Select category
   </p>
   <a href="">

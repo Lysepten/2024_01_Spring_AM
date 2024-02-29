@@ -83,3 +83,11 @@ header>div>ul>li:hover>ul {
 	font-size: 0;
 /* 	border: 5px solid yellow; */
 }
+
+.msinter {
+	font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:"slnt" 0;
+}
