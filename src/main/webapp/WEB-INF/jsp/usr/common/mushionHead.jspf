@@ -22,46 +22,39 @@
 <!-- <head class="section"> -->
   <div class="w-[1920px] h-[140px] left-[-1px] top-[-1px] bg-[#0d1e27]">
   <div style="width: 540px; height: 29px; opacity: 0.75; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));">
-    <p
-    class="absolute left-[212px] top-[53px] opacity-75 text-[28px] font-black text-left text-white"
+    <a
+   href=""  class="absolute left-[212px] top-[53px] opacity-75 text-[28px] font-black text-left text-white"
   >
     Mushion.
-  </p>
+  </a>
+  <a href="">
   <img
     src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZ6rHv%2FbtsFmlXTOOh%2F8Ru2UtPX6qK786jKZNDklk%2Fimg.jpg"
     class="w-12 h-12 absolute left-[150px] top-[45px] rounded-[50px] object-cover"
   />
- <p
-   style="position: absolute; left: 685px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
+  </a>
+ <a
+   href="" class="whitespace-nowrap" style="position: absolute; left: 685px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
  >
-   Home
- </p>
- <p
-   style="position: absolute; left: 1009px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
+   홈
+ </a>
+ <a
+    href="" class="whitespace-nowrap"style="position: absolute; left: 1009px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
  >
-   More
- </p>
- <p
-   style="position: absolute; left: 1133px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
+    뉴스
+ </a>
+ <a
+    href="" class="whitespace-nowrap"style="position: absolute; left: 1133px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
  >
-   Contact
- </p>
- <div style="width: 122.08px; height: 29px;">
-   <p
-     style="width: 105.7px; position: absolute; left: 820px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
+   더보기
+ </a>
+ <div class="whitespace-nowrap"style="width: 122.08px; height: 29px;">
+   <a
+     href="" style="width: 105.7px; position: absolute; left: 800px; top: 55px; font-size: 24px; font-weight: 500; text-align: left; color: #fff;"
    >
-     List Type
-   </p>
-   <svg
-     width="12"
-     height="6"
-     viewBox="0 0 12 6"
-     fill="none"
-     xmlns="http://www.w3.org/2000/svg"
-     style="position: absolute; left: 941.58px; top: 71.5px;"
-     preserveAspectRatio="xMidYMid meet"
-    >
-    </svg>
+    패션 & 뮤직
+   </a>
+
   </div>
 </div>
   </div>

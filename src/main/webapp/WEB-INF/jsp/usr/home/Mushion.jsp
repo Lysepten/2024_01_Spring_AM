@@ -102,7 +102,7 @@
       class="w-[217px] h-16 absolute left-[166px] top-[493px] rounded-xl border-2 border-[#028baf]"
     ><p class="text-[28px] text-[#028baf]">Explore</p>
     </button>
-
+<a href="">
     <svg
       width="64"
       height="64"
@@ -128,11 +128,13 @@
         fill="white"
       ></path>
     </svg>
+    </a>
+    
     <p class="absolute left-[499px] top-[514px] opacity-75 text-xl text-left text-white">
-      추천 음악 듣기
+      추천 음악 듣기..
     </p>
 
-    <p
+    <a href=""
       style="width: 420px; height: 48px; position: absolute; left: 759px; top: 1215px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
     >
       <span
@@ -146,18 +148,21 @@
         style="width: 420px; height: 48px; font-size: 40px; text-align: center; color: rgba(0,0,0,0.8);"
         >&#x26; Music</span
       >
-    </p>
+    </a>
+    <a href="">
     <p
       style="width: 420px; height: 48px; position: absolute; left: 1327px; top: 1215px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
     >
       Fashion
     </p>
+    </a>
+    <a href="">
     <p
       style="width: 420px; height: 48px; position: absolute; left: 173px; top: 1215px; font-size: 40px; font-weight: 700; text-align: center; color: rgba(0,0,0,0.8);"
     >
       Music
     </p>
-
+</a>
   
   
   
@@ -165,15 +170,24 @@
   <p class="absolute left-[1525px] top-[429px] text-[32px] font-semibold text-left text-white">
     Select category
   </p>
+  <a href="">
   <img
     src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJNw9U%2FbtsFm4uGOBY%2F3fhelcTffJ02r1AM8kLiDK%2Fimg.png"
     class="w-[151.66px] h-[450px] absolute left-[307px] top-[731px] object-cover"
-  /><img
+  />
+  </a>
+  <a href="">
+  <img
     src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcRFpwE%2FbtsFmg9YU4r%2Foe0li1KKGOe7yUC6JsVbXk%2Fimg.png"
     class="w-[138.64px] h-[450px] absolute left-[1460px] top-[731px] object-cover"
-  /><img
+  />
+  </a>
+  
+  <a href="">
+  <img
     src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcLwPd2%2FbtsFlO6U3aK%2FZRjRDCwWgYLLICkaOUXH3K%2Fimg.png"
     class="w-[402.5px] h-[450px] absolute left-[758px] top-[731px] object-cover"
   />
+  </a>
 </div>
 </body>
