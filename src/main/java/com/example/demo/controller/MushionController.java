@@ -16,5 +16,11 @@ public class MushionController {
 
 		return "/usr/home/Mushion";
 	}
+	
+	@RequestMapping("/usr/member/MushionLogin")
+	public String MushionLogin() {
+
+		return "/usr/member/MushionLogin";
+	}
 
 }
