@@ -59,6 +59,20 @@ line-height: 34px;
 color: white;
 }
 
+/* Mushion. logo img*/
+
+.ms-logo-img {
+position: absolute;
+width: 48px;
+height: 48px;
+left: 151px;
+top: 46px;
+
+background: url(DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape.jpg);
+border-radius: 50px;
+}
+
+
 /* Home */
 .ms-home {
 position: absolute;
@@ -141,18 +155,6 @@ width: 122.08px;
 height: 29px;
 left: 820px;
 top: 55px;
-
-
-/* DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape 2 */
-
-position: absolute;
-width: 48px;
-height: 48px;
-left: 151px;
-top: 46px;
-
-background: url(DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape.jpg);
-border-radius: 50px;
 
 
 /* Mushion. */
