@@ -20,19 +20,6 @@ font-weight: 900;
 .maintxsize {
 	font-size: 22px;
 }
-/* body */
-.msbody {
-	position: relative;
-width: 1903px;
-height: 1440px;
-
-background: #071015;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-/* login body */
-.loginbody {
-	background-color: black;
-}
 /* header */
 .msheader {
 width: 1903px;
@@ -68,7 +55,7 @@ height: 48px;
 left: 151px;
 top: 46px;
 
-background: url(DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape.jpg);
+/* background: url(DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape.jpg); */
 border-radius: 50px;
 }
 
@@ -147,58 +134,47 @@ line-height: 29px;
 white-space: nowrap;
 }
 
+/* body */
+.msbody {
+	position: relative;
+width: 1903px;
+height: 1440px;
 
-/* Group 1 */
+background: #071015;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-position: absolute;
-width: 122.08px;
-height: 29px;
-left: 820px;
-top: 55px;
+/* login body */
+.loginbody {
+	background-color: black;
+}
 
 
 /* Mushion. */
-
+.body-mushion-text {
 position: absolute;
 width: 448px;
 height: 83px;
 left: 161px;
-top: 309px;
+top: 150px;
 
-font-family: 'Barlow';
-font-style: normal;
-font-weight: 700;
 font-size: 118px;
-line-height: 100%;
-/* or 118px */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-display: flex;
-align-items: center;
-letter-spacing: -0.02em;
-
 color: #E9EBF0;
-
-border: 1px solid #000000;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. */
-
+/* 메인페이지 소개글 */
+.body-mushion-text2 {
 position: absolute;
 width: 893px;
 height: 56px;
 left: 167px;
-top: 418px;
+top: 315px;
 
-font-family: 'Inter';
+font-family: "Roboto", sans-serif;
 font-style: normal;
 font-weight: 500;
-font-size: 23px;
+font-size: 22px;
 line-height: 28px;
 display: flex;
 align-items: center;
@@ -206,10 +182,27 @@ align-items: center;
 color: #FFFFFF;
 
 opacity: 0.75;
+}
 
+/* Explore */
+.ms-explore {
+	box-sizing: border-box;
 
-/* Group 35 */
+position: absolute;
+width: 217px;
+height: 64px;
+left: 166px;
+top: 393px;
 
+border: 2px solid #028BAF;
+border-radius: 12px;
+}
+
+.mx-explpre-text {
+	font-size: 28px;
+	color: #028baf;
+}
+/* Explore */
 position: absolute;
 width: 217px;
 height: 64px;
@@ -249,6 +242,33 @@ line-height: 34px;
 /* identical to box height */
 
 color: #028BAF;
+
+
+
+/* Group 1 */
+
+position: absolute;
+width: 122.08px;
+height: 29px;
+left: 820px;
+top: 55px;
+
+
+
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+display: flex;
+align-items: center;
+letter-spacing: -0.02em;
+
+color: #E9EBF0;
+
+border: 1px solid #000000;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 
 
 

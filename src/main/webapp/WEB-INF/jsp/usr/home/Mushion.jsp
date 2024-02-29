@@ -15,10 +15,8 @@
 </style>
 
 <body class="section">
-<div
-  class="msbody"
-  style="box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.25);"
->
+<div class="msbody">
+<!-- 메인페이지 도형 -->
   <svg
     width="1657"
     height="458"
@@ -95,22 +93,23 @@
       </linearGradient>
     </defs>
   </svg>
-  
-  <p class=" msfont absolute left-[161px] top-[150px] text-[118px] font-bold text-left text-[#e9ebf0]">
+
+<!-- 메인페이지 로고 텍스트 -->
+  <p class="msfont body-mushion-text">
     Mushion.
   </p>
-  <p
-    class="w-[893px] absolute left-[167px] top-[300px] opacity-75 text-[22px] font-medium text-left text-white"
-  >
+<!--   메인페이지 소개글 -->
+  <p class="body-mushion-text2">
     패션과 음악을 즐기는 사람들이 함께 모이는 활기찬 커뮤니티 허브에 오신 것을 환영합니다!
     <br />
     생동감 넘치는 스타일과 매력적인 멜로디를 탐험해 보세요.
   </p>
 
     <button
-      class="w-[217px] h-16 absolute left-[166px] top-[393px] rounded-xl border-2 border-[#028baf]"
-    ><p class="text-[28px] text-[#028baf]">Explore</p>
+      class="ms-explore"
+    ><p class="mx-explpre-text">Explore</p>
     </button>
+    
 <a href="">
     <svg
       width="64"
