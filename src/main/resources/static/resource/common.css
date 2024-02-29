@@ -32,6 +32,14 @@
 		format('woff');
 }
 
+.msinter {
+	font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:"slnt" 0;
+}
+
 .lottemartdream * {
 	font-family: 'LotteMartDream', sans-serif;
 }
@@ -47,21 +55,7 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
-/* .login-box>tbody>tr>td>input { */
-/* 	padding-left: 10px; */
-/* } */
 
-/* .login-box>tbody>tr:nth-child(3)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .join-box>tbody>tr:nth-child(7)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .modify-box>tbody>tr:nth-child(5)>td>input, .modify-box>tbody>tr:nth-child(6)>td>input, */
-/* 	.modify-box>tbody>tr:nth-child(7)>td>input { */
-/* } */
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
 	padding: 10px;
@@ -79,15 +73,6 @@ header>div>ul>li:hover>ul {
 	display: block;
 }
 
-.section {
-	font-size: 0;
-/* 	border: 5px solid yellow; */
-}
-
-.msinter {
-	font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:"slnt" 0;
+.msheader {
+	
 }
