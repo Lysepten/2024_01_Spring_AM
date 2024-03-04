@@ -20,6 +20,7 @@ font-weight: 900;
 .maintxsize {
 	font-size: 22px;
 }
+																			/* 헤더 */
 /* header */
 .msheader {
 width: 1903px;
@@ -54,8 +55,6 @@ width: 48px;
 height: 48px;
 left: 151px;
 top: 46px;
-
-/* background: url(DALL·E 2024-02-23 13.32.32 - Design a logo for 'mushion', a community site about fashion and music, incorporating a wind chime transformed into a necklace shape.jpg); */
 border-radius: 50px;
 }
 
@@ -118,7 +117,7 @@ white-space: nowrap;
 
 /* more */
 .ms-more {
-	position: absolute;
+position: absolute;
 width: 92px;
 height: 29px;
 left: 1133px;
@@ -134,7 +133,26 @@ line-height: 29px;
 white-space: nowrap;
 }
 
+/* login page move */
+.ms-login {
+position: absolute;
+width: 92px;
+height: 29px;
+left: 1600px;
+top: 55px;
+color: #c8c8c8;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-size: 24px;
+font-weight: 500;
+line-height: 29px;
+
+white-space: nowrap;
+}
+																/* 메인 페이지 */
 /* body */
+/* body contents */
 .msbody {
 	position: relative;
 width: 1903px;
@@ -149,174 +167,30 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	background-color: black;
 }
 
-
 /* Mushion. */
-.body-mushion-text {
+.ms-body-main-mushion-text {
 position: absolute;
 width: 448px;
 height: 83px;
 left: 161px;
-top: 150px;
+top: 165px;
 
+font-family: "Barlow", sans-serif;
+font-weight: 700;
+font-style: normal;
 font-size: 118px;
-color: #E9EBF0;
+line-height: 100%;
+
+color: #e9ebf0;
 }
 
-
-/* 메인페이지 소개글 */
-.body-mushion-text2 {
-position: absolute;
-width: 893px;
-height: 56px;
-left: 167px;
-top: 315px;
-
-font-family: "Roboto", sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 22px;
-line-height: 28px;
-display: flex;
-align-items: center;
-
-color: #FFFFFF;
-
-opacity: 0.75;
-}
-
-/* Explore */
-.ms-explore {
-	box-sizing: border-box;
-
-position: absolute;
-width: 217px;
-height: 64px;
-left: 166px;
-top: 393px;
-
-border: 2px solid #028BAF;
-border-radius: 12px;
-}
-
-.mx-explpre-text {
-	font-size: 28px;
-	color: #028baf;
-}
-/* Explore */
-position: absolute;
-width: 217px;
-height: 64px;
-left: 167px;
-top: 494px;
-
-opacity: 0.75;
-
-
-/* Rectangle 3 */
-
-box-sizing: border-box;
-
-position: absolute;
-width: 217px;
-height: 64px;
-left: 167px;
-top: 494px;
-
-border: 2px solid #028BAF;
-border-radius: 12px;
-
-
-/* Explore */
-
-position: absolute;
-width: 99px;
-height: 34px;
-left: 226px;
-top: 509px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 28px;
-line-height: 34px;
-/* identical to box height */
-
-color: #028BAF;
-
-
-
-/* Group 1 */
-
-position: absolute;
-width: 122.08px;
-height: 29px;
-left: 820px;
-top: 55px;
-
-
-
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-display: flex;
-align-items: center;
-letter-spacing: -0.02em;
-
-color: #E9EBF0;
-
-border: 1px solid #000000;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-
-
-
-/* Group 36 */
-
-position: absolute;
-width: 196px;
-height: 64px;
-left: 419px;
-top: 494px;
-
-
-
-/* Ellipse 1 */
-
-box-sizing: border-box;
-
-position: absolute;
-width: 64px;
-height: 64px;
-left: 419px;
-top: 494px;
-
-opacity: 0.75;
-border: 2px solid #FFFFFF;
-
-
-/* Polygon 2 */
-
-position: absolute;
-width: 34px;
-height: 34px;
-left: 468px;
-top: 509px;
-
-background: #FFFFFF;
-opacity: 0.75;
-border-radius: 3px;
-transform: rotate(90deg);
-
-
-/* Live Demo... */
-
+/* 추천 음악 듣기... */
+.ms-body-recommendMusic {
 position: absolute;
 width: 116px;
 height: 24px;
 left: 499px;
-top: 514px;
+top: 414px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -327,121 +201,19 @@ line-height: 24px;
 color: #FFFFFF;
 
 opacity: 0.75;
-
-
-/* search-interface-symbol 2 */
-
-position: absolute;
-width: 26px;
-height: 26px;
-left: 1567px;
-top: 57px;
-
-background: url(search-interface-symbol.png);
-opacity: 0.75;
-
-
-/* Group 35 */
-
-position: absolute;
-width: 540px;
-height: 29px;
-left: calc(50% - 540px/2 - 5px);
-top: 55px;
-
-opacity: 0.75;
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-/* Polygon 1 */
-
-box-sizing: border-box;
-
-position: absolute;
-width: 12.08px;
-height: 7px;
-left: 942.08px;
-top: 72px;
-
-background: #FFFFFF;
-border: 1px solid #FFFFFF;
-transform: rotate(180deg);
-
-
-/* bag 4 */
-
-position: absolute;
-width: 26px;
-height: 26px;
-left: 1652px;
-top: 57px;
-
-background: url(bag.png);
-opacity: 0.75;
-
-
-/* Group 36 */
-
-position: absolute;
-width: 31px;
-height: 13px;
-left: 1737px;
-top: 63px;
-
-opacity: 0.75;
-
-
-/* Line 1 */
-
-position: absolute;
-width: 31px;
-height: 0px;
-left: 1737px;
-top: 63px;
-
-border: 4px solid #FFFFFF;
-
-
-/* Line 2 */
-
-position: absolute;
-width: 23px;
-height: 0px;
-left: 1745px;
-top: 76px;
-
-border: 4px solid #FFFFFF;
-
-
-/* Group 40 */
-
-position: absolute;
-width: 1574px;
-height: 48px;
-left: 173px;
-top: 1214px;
-
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-
-/* Group 12 */
-
-position: absolute;
-width: 1574px;
-height: 48px;
-left: 173px;
-top: 1214px;
-
-
+white-space: nowrap;
+}
 
 /* Fashion & Music */
 
+.fashion-music-font {
 position: absolute;
 width: 420px;
 height: 48px;
 left: 759px;
 top: 1214px;
 
-font-family: 'Kite One';
+font-family: "Kite One", sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 40px;
@@ -450,11 +222,11 @@ text-align: center;
 
 color: rgba(0, 0, 0, 0.8);
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
 
 /* Fashion */
-
+.fashion-font {
 position: absolute;
 width: 420px;
 height: 48px;
@@ -471,10 +243,10 @@ text-align: center;
 color: rgba(0, 0, 0, 0.8);
 
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+}
 
 /* Music */
-
+.music-font {
 position: absolute;
 width: 420px;
 height: 48px;
@@ -491,30 +263,74 @@ text-align: center;
 color: rgba(0, 0, 0, 0.8);
 
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
+/* 메인페이지 소개글 */
+.body-mushion-text2 {
+position: absolute;
+width: 893px;
+height: 56px;
+left: 167px;
+top: 305px;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 28px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+opacity: 0.75;
+}
+
+/* Explore */
+.explore-btn {
+box-sizing: border-box;
+
+position: absolute;
+width: 217px;
+height: 64px;
+left: 167px;
+top: 393px;
+
+border: 2px solid #028BAF;
+border-radius: 12px;
+opacity: 0.75;
+}
+
+.explore-btn-text {
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+
+color:#028BAF;
+}
 
 /* Select category */
-
+.Select-category {
 position: absolute;
 width: 245px;
 height: 39px;
-left: calc(50% - 245px/2 + 687.5px);
-top: 429px;
+left: 1500px;
+top: 320px;
 
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
 font-size: 32px;
 line-height: 39px;
-/* identical to box height */
 
 color: #FFFFFF;
 
 text-shadow: 0px 100px 80px rgba(0, 0, 0, 0.36), 0px 50.0488px 40.0391px rgba(0, 0, 0, 0.27372), 0px 30.1471px 24.1177px rgba(0, 0, 0, 0.234572), 0px 19.3198px 15.4559px rgba(0, 0, 0, 0.205522), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.18), 0px 7.88218px 6.30574px rgba(0, 0, 0, 0.154478), 0px 4.5288px 3.62304px rgba(0, 0, 0, 0.125428), 0px 1.99324px 1.59459px rgba(0, 0, 0, 0.0862802);
+}
 
-
-/* qfqref 1 */
-
+/* main page img1 */
+.main-img1 {
 position: absolute;
 width: 151.66px;
 height: 450px;
@@ -522,10 +338,12 @@ left: 308px;
 top: 732px;
 
 background: url(qfqref.png);
+}
 
 
-/* qwefvqwerfvqv3232 1 */
 
+/* main page img2 */
+.main-img2 {
 position: absolute;
 width: 138.64px;
 height: 450px;
@@ -533,10 +351,12 @@ left: 1461px;
 top: 732px;
 
 background: url(qwefvqwerfvqv3232.png);
+}
 
 
-/* qwef134f134f143 1 */
 
+/* main page img3 */
+.main-img3 {
 position: absolute;
 width: 402.5px;
 height: 450px;
@@ -544,3 +364,376 @@ left: 759px;
 top: 732px;
 
 background: url(qwef134f134f143.png);
+}
+
+																		/* 로그인 페이지 */
+/* mushion login body */
+.ms-login-body {
+position: relative;
+width: 1903px;
+height: 1107px;
+
+background: #0D1E27;
+}
+
+/* Auto layout */
+.ms-login-layout {
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1468px;
+height: 1107px;
+left: 217px;
+top: 0px;
+}
+
+/* 로그인 페이지 이미지 */
+.ms-login-mainimg {
+width: 748px;
+height: 1106.64px;
+
+background: url(.jpg), url(.jpg);
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+
+/* login mainlayout */
+.ms-login-mainlayout {
+width: 720px;
+height: 1107px;
+
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+
+/* login mainlayout2 */
+.ms-login-mainlayout2 {
+	position: absolute;
+width: 720px;
+height: 1107px;
+left: 748px;
+top: 0px;
+
+background: #071015;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* 계정이 필요하신가요 ? 무료로 가입하기 */
+.ms-login-jointext {
+position: absolute;
+width: 389px;
+left: calc(50% - 410px/2 + 386.5px);
+top: 70%;
+bottom: 10.03%;
+}
+/* 계정이 필요하신가요 ? */
+.ms-dojoin-text {
+	font-family: "Roboto", sans-serif;
+	font-size: 22px;
+	line-height: 2rem;
+	font-weight: 500;
+	text-align: left;
+	color: #a9acbb;
+	white-space: nowrap;
+}
+/* 무료로 가입하기 */
+.ms-dojoin-text2 {
+	font-family: "Roboto", sans-serif;
+	font-size: 22px;
+	line-height: 2rem;
+	font-weight: 500;
+	text-align: left;
+	color: #28a7ff;
+	white-space: nowrap;
+}
+/* 환영합니다. */
+.ms-login-welcome-text {
+position: absolute;
+width: 78px;
+height: 19px;
+left: 900px;
+top: 111px;
+
+font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-style: normal;
+font-size: 15px;
+line-height: 19px;
+
+color: #A9ACBB;
+
+white-space: nowrap;
+}
+
+/* 사용중인 계정으로 로그인 */
+.ms-login-welcome-text2 {
+position: absolute;
+width: 361px;
+height: 40px;
+left: 900px;
+top: 168px;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 40px;
+
+
+color: #FFFFFF;
+white-space: nowrap;
+}
+
+/* 비밀번호를 잊으셨나요? */
+.ms-login-welcome-text3{
+position: absolute;
+left: 78%;
+right: 8.31%;
+top: 44.26%;
+bottom: 54.02%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 19px;
+
+color: #028BAF;
+white-space: nowrap;
+}
+
+
+/* 아이디 기억하기 */
+.ms-login-welcome-text4 {
+position: absolute;
+left: 63.83%;
+right: 28.88%;
+top: 44.26%;
+bottom: 54.02%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 19px;
+
+color: #A9ACBB;
+white-space: nowrap;
+}
+
+/* 내 계정으로 로그인 */
+.ms-login-mylogin {
+box-sizing: border-box;
+
+position: absolute;
+left: 61.04%;
+right: 10.42%;
+top: 55.37%;
+bottom: 40.29%;
+
+background: #28A7FF;
+border: 1px solid #28A7FF;
+border-radius: 48px;
+}
+/* 내 계정으로 로그인 텍스트 */
+.ms-login-mylogin-text {
+position: absolute;
+width: 126px;
+left: calc(50% - 130px/2 + 371px);
+top: 56.7%;
+bottom: 41.64%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 19px;
+
+color: #FFFFFF;
+white-space: nowrap;
+}
+
+
+/* 비밀번호 텍스트 */
+.ms-login-pw-text {
+position: absolute;
+left: 64.92%;
+right: 28.47%;
+top: 35.8%;
+bottom: 62.69%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 19px;
+/* identical to box height */
+
+/* Label */
+color: #A9ACBB;
+white-space: nowrap;
+}
+/* 비밀번호 텍스트 테두리 */
+.ms-login-pw {
+box-sizing: border-box;
+
+position: absolute;
+width: 411px;
+height: 54px;
+left: 900px;
+top: 376px;
+
+border: 1px solid #28A7FF;
+border-radius: 12px;
+}
+
+/* 아이디 텍스트 */
+.ms-login-id-text {
+position: absolute;
+width: 80%;
+height: 100%;
+left: 13%;
+/* right: 25%; */
+/* top: 25.8%; */
+/* bottom: 72.54%; */
+border: 0;
+outline: none;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #A9ACBB;
+background-color: transparent;
+white-space: nowrap;
+z-index: 1000;
+}
+
+/* 비밀번호 텍스트 테두리 */
+.ms-login-id {
+/* box-sizing: border-box; */
+
+position: absolute;
+width: 411px;
+height: 54px;
+left: 900px;
+top: 268px;
+
+border: 1px solid #28A7FF;
+border-radius: 12px;
+}
+
+/* Naver */
+.ms-login-Naver-btn {
+position: absolute;
+left: 61.31%;
+right: 25.07%;
+top: 48.42%;
+bottom: 47.24%;
+
+background: #00C73C;
+border-radius: 48px;
+	
+}
+
+
+/* Naver img */
+.ms-login-Naver-btn-img {
+position: absolute;
+left: 910px;
+top: 540px;
+
+width: 2.5rem;
+height: 40px;
+}
+/* Naver text */
+.ms-login-Naver-btn-text {
+position: absolute;
+left: 64.8%;
+right: 29.5%;
+top: 49.77%;
+bottom: 48.51%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+white-space: nowrap;
+}
+
+
+/* Googole */
+.ms-login-google-btn {
+position: absolute;
+left: 1140px;
+top: 545px;
+
+width: 2rem;
+height: 31px;
+}
+
+/* Google text */
+.ms-login-google-btn-text {
+position: absolute;
+left: 81%;
+right: 15.19%;
+top: 49.77%;
+bottom: 48.51%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 19px;
+
+color: #A9ACBB;
+white-space: nowrap;
+}
+
+/* 로그인 페이지 뒤로가기 */
+.ms-login-back-btn {
+position: absolute;
+width: 89px;
+left: 63%;
+top: 87.44%;
+bottom: 10.03%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 28px;
+
+color: #A9ACBB;
+white-space: nowrap;
+}
+/* 로그인 페이지 홈으로 */
+.ms-login-home-btn {
+position: absolute;
+width: 89px;
+left: 63%;
+top: 93%;
+bottom: 10.03%;
+
+font-family: "Roboto", sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 28px;
+
+color: #A9ACBB;
+white-space: nowrap;
+}
